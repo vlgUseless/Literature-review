@@ -1,0 +1,950 @@
+\documentclass[a4paper, final]{article}
+%\usepackage{literat} % Нормальные шрифты
+\usepackage[14pt]{extsizes} % для того чтобы задать нестандартный 14-ый размер шрифта
+\usepackage[T2A]{fontenc}
+\usepackage[UTF8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{listings} %листинги
+\usepackage{amsmath}
+\usepackage{amssymb} % Для красивого значка пустого множества
+\usepackage[left=25mm, top=20mm, right=20mm, bottom=20mm, footskip=10mm]{geometry}
+\usepackage{ragged2e} %для растягивания по ширине
+\usepackage{setspace} %для межстрочного интервала
+\usepackage{indentfirst} % для абзацного отступа
+\usepackage{moreverb} %для печати в листинге исходного кода программ
+\renewcommand\verbatimtabsize{4\relax}
+\renewcommand\listingoffset{0.2em} %отступ от номеров строк в листинге
+\renewcommand{\arraystretch}{1.4} % изменяю высоту строки в таблице
+\usepackage[font=small, singlelinecheck=false, justification=centering, format=plain, labelsep=period]{caption} %для настройки заголовка таблицы
+\usepackage{listingsutf8}
+\usepackage{xcolor} % цвета
+\usepackage{hyperref}% для гиперссылок
+\usepackage{enumitem} %для перечислений
+\usepackage{titlesec}
+\usepackage{graphicx}
+\graphicspath{ {./Рисунки/} }
+%\usepackage{float}
+\usepackage{booktabs}
+\usepackage{floatrow}
+\usepackage{scalerel} % Stretching images
+\usepackage[final]{pdfpages}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{caption} % заголовки плавающих объектов
+
+\captionsetup[figure]{name=Fig} % заголовок рисунков
+\captionsetup[table]{name=Table} % заголовок рисунков
+
+\definecolor{apricot}{HTML}{FFF0DA}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{string}{HTML}{B40000} % цвет строк в коде
+\definecolor{comment}{HTML}{008000} % цвет комментариев в коде
+\definecolor{keyword}{HTML}{1A00FF} % цвет ключевых слов в коде
+\definecolor{morecomment}{HTML}{8000FF} % цвет include и других элементов в коде
+\definecolor{captiontext}{HTML}{FFFFFF} % цвет текста заголовка в коде
+\definecolor{captionbk}{HTML}{999999} % цвет фона заголовка в коде
+\definecolor{bk}{HTML}{FFFFFF} % цвет фона в коде
+\definecolor{frame}{HTML}{999999} % цвет рамки в коде
+\definecolor{brackets}{HTML}{B40000} % цвет скобок в коде
+
+
+
+
+
+\AtBeginDocument{\renewcommand{\contentsname}{Contents}}
+\AtBeginDocument{\renewcommand{\refname}{References}}
+% Настраиваем листинги, чтобы они использовали счётчик figure
+\AtBeginDocument{
+  \renewcommand{\thelstlisting}{\thefigure}  % Листинги используют тот же счетчик, что и рисунки
+  \renewcommand{\lstlistingname}{Fig.}    % Меняем подпись
+}
+
+% Автоматически увеличиваем счетчик figure перед каждым листингом
+\let\oldlstlisting\lstlisting
+\renewcommand{\lstlisting}[1][]{%
+    \refstepcounter{figure}% Увеличиваем счетчик figure
+    \oldlstlisting[#1]% Вызываем оригинальную команду lstlisting
+}
+\lstset{
+    captionpos=b
+}
+\newcommand{\specialcell}[2][l]{\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}} % Алиас для таблиц
+
+\floatsetup[table]{style=plain,capposition=top} % Подпись таблицы сверху
+\setlist[enumerate,itemize]{leftmargin=1.2cm} %отступ в перечислениях
+
+\hypersetup{colorlinks,
+  allcolors=[RGB]{010 090 200}} %красивые гиперссылки (не красные)
+
+% подгружаемые языки — подробнее в документации listings (это всё для листингов)
+\lstloadlanguages{ [LaTeX] TeX}
+% включаем кириллицу и добавляем кое−какие опции
+\lstset{language =[LaTeX] TeX, % выбираем язык по умолчанию
+extendedchars=true , % включаем не латиницу
+escapechar = | , % |«выпадаем» в LATEX|
+frame=tb , % рамка сверху и снизу
+commentstyle=\itshape , % шрифт для комментариев
+stringstyle =\bfseries} % шрифт для строк
+
+\textheight=24cm % высота текста
+\textwidth=16cm % ширина текста
+\oddsidemargin=0pt % отступ от левого края
+\topmargin=-1.5cm % отступ от верхнего края
+\parindent=24pt % абзацный отступ
+\parskip=0pt % интервал между абзацами
+\tolerance=2000 % терпимость к "жидким" строкам
+\flushbottom % выравнивание высоты страниц
+
+\begin{document} % начало документа
+\setcounter{tocdepth}{2} % Вложенность не больше 2 в содержании
+\lstset{
+  language=haskell, % Язык кода по умолчанию
+  morekeywords={*,...}, % если хотите добавить ключевые слова, то добавляйте
+  % Цвета
+  keywordstyle=\color{keyword}\ttfamily\bfseries,
+  %stringstyle=\color{string}\ttfamily,
+  stringstyle=\ttfamily\color{red!50!brown},
+  commentstyle=\color{comment}\ttfamily,
+  morecomment=[l][\color{morecomment}]{\#},
+  % Настройки отображения
+  breaklines=true, % Перенос длинных строк
+  basicstyle=\ttfamily\footnotesize, % Шрифт для отображения кода
+  backgroundcolor=\color{bk}, % Цвет фона кода
+  frame=single,xleftmargin=\fboxsep,xrightmargin=-\fboxsep, % Рамка, подогнанная к заголовку
+  rulecolor=\color{frame}, % Цвет рамки
+  tabsize=3, % Размер табуляции в пробелах
+  % Настройка отображения номеров строк. Если не нужно, то удалите весь блок
+  numbers=left, % Слева отображаются номера строк
+  stepnumber=1, % Каждую строку нумеровать
+  numbersep=5pt, % Отступ от кода
+  numberstyle=\small\color{black}, % Стиль написания номеров строк
+  % Для отображения русского языка
+  extendedchars=true,
+  literate={Ö}{ {\"O} }1
+  {~}{ {\textasciitilde} }1
+  {а}{ {\selectfont\char224} }1
+  {б}{ {\selectfont\char225} }1
+  {в}{ {\selectfont\char226} }1
+  {г}{ {\selectfont\char227} }1
+  {д}{ {\selectfont\char228} }1
+  {е}{ {\selectfont\char229} }1
+  {ё}{ {\"e} }1
+  {ж}{ {\selectfont\char230} }1
+  {з}{ {\selectfont\char231} }1
+  {и}{ {\selectfont\char232} }1
+  {й}{ {\selectfont\char233} }1
+  {к}{ {\selectfont\char234} }1
+  {л}{ {\selectfont\char235} }1
+  {м}{ {\selectfont\char236} }1
+  {н}{ {\selectfont\char237} }1
+  {о}{ {\selectfont\char238} }1
+  {п}{ {\selectfont\char239} }1
+  {р}{ {\selectfont\char240} }1
+  {с}{ {\selectfont\char241} }1
+  {т}{ {\selectfont\char242} }1
+  {у}{ {\selectfont\char243} }1
+  {ф}{ {\selectfont\char244} }1
+  {х}{ {\selectfont\char245} }1
+  {ц}{ {\selectfont\char246} }1
+  {ч}{ {\selectfont\char247} }1
+  {ш}{ {\selectfont\char248} }1
+  {щ}{ {\selectfont\char249} }1
+  {ъ}{ {\selectfont\char250} }1
+  {ы}{ {\selectfont\char251} }1
+  {ь}{ {\selectfont\char252} }1
+  {э}{ {\selectfont\char253} }1
+  {ю}{ {\selectfont\char254} }1
+  {я}{ {\selectfont\char255} }1
+  {А}{ {\selectfont\char192} }1
+  {Б}{ {\selectfont\char193} }1
+  {В}{ {\selectfont\char194} }1
+  {Г}{ {\selectfont\char195} }1
+  {Д}{ {\selectfont\char196} }1
+  {Е}{ {\selectfont\char197} }1
+  {Ё}{ {\"E} }1
+  {Ж}{ {\selectfont\char198} }1
+  {З}{ {\selectfont\char199} }1
+  {И}{ {\selectfont\char200} }1
+  {Й}{ {\selectfont\char201} }1
+  {К}{ {\selectfont\char202} }1
+  {Л}{ {\selectfont\char203} }1
+  {М}{ {\selectfont\char204} }1
+  {Н}{ {\selectfont\char205} }1
+  {О}{ {\selectfont\char206} }1
+  {П}{ {\selectfont\char207} }1
+  {Р}{ {\selectfont\char208} }1
+  {С}{ {\selectfont\char209} }1
+  {Т}{ {\selectfont\char210} }1
+  {У}{ {\selectfont\char211} }1
+  {Ф}{ {\selectfont\char212} }1
+  {Х}{ {\selectfont\char213} }1
+  {Ц}{ {\selectfont\char214} }1
+  {Ч}{ {\selectfont\char215} }1
+  {Ш}{ {\selectfont\char216} }1
+  {Щ}{ {\selectfont\char217} }1
+  {Ъ}{ {\selectfont\char218} }1
+  {Ы}{ {\selectfont\char219} }1
+  {Ь}{ {\selectfont\char220} }1
+  {Э}{ {\selectfont\char221} }1
+  {Ю}{ {\selectfont\char222} }1
+  {Я}{ {\selectfont\char223} }1
+  {\{}{ { {\color{brackets}\{} } }1 % Цвет скобок {
+  {\} }{ { {\color{brackets}\} } } }1 % Цвет скобок }
+}
+
+% НАЧАЛО ТИТУЛЬНОГО ЛИСТА
+\begin{center}
+    \hfill \break
+    \hfill \break
+    \normalsize{MINISTRY OF SCIENCE AND HIGHER EDUCATION OF THE RUSSIAN FEDERATION\\
+    Federal State Autonomous Educational Institution of Higher Education Peter the Great St. Petersburg Polytechnic University\\[10pt]}
+    \normalsize{Institute of Computer Science and Cybersecurity}\\[10pt] 
+    \normalsize{Higher School of Artificial Intelligence Technology}\\[10pt] 
+    \normalsize{Direction 02.03.01 Mathematics and computer Science}\\
+    
+    \hfill \break
+    \hfill \break
+    \hfill \break
+    \hfill \break
+    \large{\textbf{Literature Review}}\\
+    \large{\textit{Workflow scheduling algorithms for HPC and cloud environments}}\\
+    
+    \hfill \break
+    \hfill \break
+\end{center}
+
+\small{ 
+    \begin{tabular}{lrrl}
+        \!\!\!Student, & \hspace{2cm} & & \\
+        \!\!\!group 5130201/20102 & \hspace{2cm} & \underline{\hspace{3cm}} & Gaar V. S. \\\\
+        \!\!\!Supervisor, Ph. D. & \hspace{2cm} &  \underline{\hspace{3cm}} &  Motorin D. E. \\\\
+        &&\hspace{4cm}
+    \end{tabular}
+    \begin{flushright}
+        <<\underline{\hspace{1cm}}>>\underline{\hspace{2.5cm}} 2024г.
+    \end{flushright}
+}
+
+\hfill \break
+% \hfill \break
+\begin{center} \small{Saint-Petersburg, 2024} \end{center}
+\thispagestyle{empty} % выключаем отображение номера для этой страницы
+
+% КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+\newpage
+\section*{Keywords}
+Workflow scheduling, HPC, MEC, cloud, DAG, tasks, jobs, DC, privacy.
+
+\newpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{Introduction}
+\section*{Introduction}
+Workflow scheduling plays a pivotal role in modern computing environments, where the complexity and scale of tasks have 
+grown exponentially. These environments include High-Performance Computing (HPC) \cite{bib:1_acrl}, Mobile Edge 
+Computing (MEC) \cite{bib:2_faro}, \cite{bib:6_marine}, Edge Function as a Service (Edge FaaS) \cite{bib:4_faas}, 
+Geographically Distributed Cloud Data Centers (GD-CDCs) \cite{bib:5_epee}, \cite{bib:7_ppps}, and hybrid cloud-edge 
+ecosystems \cite{bib:8}, \cite{bib:9}, each characterized by unique challenges and requirements. The surge in data-intensive 
+applications -- ranging from artificial intelligence workloads to real-time IoT systems -- has amplified the demand for 
+efficient scheduling mechanisms that can dynamically allocate resources, optimize execution time, and minimize energy 
+consumption while adhering to evolving privacy regulations.
+
+The advent of distributed systems introduces complexities that traditional scheduling methods struggle to address. 
+Distributed computing environments are inherently heterogeneous, involving diverse resource types such as CPUs, GPUs, 
+memory, and network bandwidth, which must be coordinated to meet the demands of complex workflows. A 
+common representation of such workflows is through a Directed Acyclic Graph (DAG), as shown in Fig.~\ref{fig:1} of  \cite{bib:1_acrl}, 
+where nodes represent tasks, and edges define dependencies. Moreover, the dynamic nature of workloads, where task 
+priorities and resource availability fluctuate unpredictably, exacerbates the need 
+for adaptable and resilient scheduling mechanisms \cite{bib:3_sandcat}. Additionally, these systems often span 
+multiple geographic regions, as seen in GD-CDCs and hybrid cloud models, where data transfer costs, latency, and 
+privacy constraints further complicate resource allocation \cite{bib:7_ppps}, \cite{bib:9}.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[scale=1.5]{dag.jpg}
+   \caption{Examples of tasks and jobs with distinct arrival times and demands (in terms of processing and expected 
+   walltime). Each rectangle represents a task: processing is denoted by the rectangle height and execution time by 
+   the base’s length. The arrows represent the execution’s workflow.}
+   \label{fig:1}
+\end{figure}
+
+Energy efficiency has emerged as a critical consideration, particularly in edge and cloud computing environments, 
+where power consumption directly impacts operational costs and sustainability goals. Studies such as
+exploration of DVFS-based optimization \cite{bib:5_epee} highlight the growing emphasis on energy-aware scheduling, 
+which seeks to balance resource utilization with energy savings. Similarly, edge-focused systems like those addressed 
+in \cite{bib:3_sandcat} aim to optimize energy consumption while ensuring low latency, which is 
+critical for real-time applications such as autonomous vehicles and industrial IoT.
+
+Another dimension of complexity lies in the integration of data privacy requirements, particularly in geo-distributed 
+systems. As workflows increasingly operate across multiple jurisdictions, privacy-preserving mechanisms, such as those 
+proposed in \cite{bib:7_ppps}, are essential to comply with regional data protection laws, reflected in the Fig.~\ref{fig:privacy}
+of \cite{bib:7_ppps} while maintaining operational efficiency. These privacy constraints introduce new trade-offs between WAN usage, data 
+locality, and computational overhead, necessitating innovative approaches to graph partitioning and workflow 
+scheduling \cite{bib:8}.
+
+\begin{figure}[H]
+   \centering
+   \includegraphics[scale=1.5]{privacy.jpg}
+   \caption{A comparative ranking of 54 countries’ privacy and data protection requirements.}
+   \label{fig:privacy}
+\end{figure}
+
+The core challenges shared across all ten reviewed studies include:
+
+\begin{itemize}
+\item Efficient resource allocation in heterogeneous environments, ensuring fair distribution of computational resources 
+such as CPU, memory, and network bandwidth.
+\item Dynamic task scheduling to adapt to unpredictable workloads and fluctuating resource availability in real time.
+\item Optimization of key performance metrics, such as execution time, cost, energy consumption, and latency, to achieve 
+global system efficiency.
+\item Scalability and flexibility, enabling systems to handle growing workloads and infrastructure expansions without 
+significant performance degradation.
+\item Integration of privacy and regulatory constraints, particularly in systems spanning multiple regions with varying 
+legal requirements \cite{bib:7_ppps}, \cite{bib:10}.
+\end{itemize}
+
+To address these challenges, researchers have turned to machine learning, heuristic and metaheuristic optimization 
+algorithms, and hybrid approaches that combine static and dynamic scheduling strategies. Examples include the use of 
+Actor-Critic Reinforcement Learning \cite{bib:1_acrl}, multi-strategy heuristic optimization \cite{bib:3_sandcat}, and 
+genetically modified particle swarm optimization \cite{bib:10}. These methods represent a shift towards more adaptable, 
+intelligent scheduling frameworks that balance multiple objectives simultaneously.
+
+This literature review focuses on the comparative analysis of these innovative scheduling approaches, highlighting 
+their strengths, limitations, and potential for integration into future systems. The studies collectively advance the 
+field by addressing the pressing need for scalable, energy-efficient, and privacy-compliant workflow scheduling, 
+offering insights into how these methods can be adapted for the evolving landscape of distributed computing.
+
+\newpage
+\section{General analysis}
+
+An Actor-Critic RL approach was used in \cite{bib:1_acrl}, designed to reduce task delays in high-performance 
+computing environments. By framing task scheduling as a directed acyclic graph (DAG), this method allows 
+adaptive queue management, significantly outperforming traditional First-Come, First-Served (FCFS) and 
+Shortest Processing Time (SPT) methods, particularly in terms of throughput. However, its focus on HPC makes 
+it less suited for environments with dynamic workloads or stringent privacy constraints.
+
+In comparison, Feedback Artificial Remora Optimization (FARO) was applied in \cite{bib:2_faro} for MEC 
+environments, balancing CPU, memory, and security requirements. FARO shows high efficiency, achieving low 
+CPU and memory usage (0.012 and 0.010, respectively), which is especially beneficial for mobile edge scenarios.
+Unlike the method in \cite{bib:1_acrl}, FARO highlights resource security as a core feature, providing a 
+hybrid optimization approach for security-sensitive workflows where resource availability varies dynamically.
+
+The Multi-Strategy Improved Sand Cat Optimization Algorithm (MSISCSOA), introduced in \cite{bib:3_sandcat}, 
+focuses on reducing delay and energy consumption in heterogeneous edge computing environments. With energy 
+consumption decreased by approximately 19.56\%, MSISCSOA emphasizes task adaptability through dynamic search 
+strategies. This method contrasts with FARO’s emphasis on security \cite{bib:2_faro}, instead optimizing 
+energy efficiency and latency in resource-constrained edge networks. The method’s edge-specific design yields 
+lower delay compared to general algorithms, aligning well with latency-critical applications.
+
+In EFaaS environments, a serverless scheduling mechanism combining Highest Bid First and Warm Function 
+First (HBFM and WFFM) is proposed in \cite{bib:4_faas} to enhance execution time. The mechanism is unique 
+in its prioritization and bidding-based resource allocation, achieving efficient multi-user task distribution. 
+Results indicate a decrease in workflow execution time, but unlike the MSISCSOA approach \cite{bib:3_sandcat}, 
+this method is less effective for energy optimization, as it prioritizes task execution time over energy or 
+CPU considerations in serverless environments.
+
+Electricity Price and Energy-Efficient (EPEE) Scheduling, presented in \cite{bib:5_epee}, is particularly 
+notable for its energy cost reduction in geographically distributed data centers, where energy consumption 
+varies by location. Leveraging Dynamic Voltage and Frequency Scaling (DVFS), EPEE significantly cuts down
+energy costs, aligning with the efficiency goals of MSISCSOA \cite{bib:3_sandcat} but extending them to cloud 
+environments with geographic data distribution. Unlike edge-specific approaches, EPEE accommodates varying 
+electricity prices, making it ideal for distributed cloud systems where energy cost control is crucial.
+
+The method in \cite{bib:6_marine} further innovates within MEC by combining a Marine Predator Algorithm 
+(OMPA) with workload prediction via artificial neural networks (ANNs). The OMPA’s unique opposition-based 
+learning prevents local minima, optimizing task scheduling even under fluctuating workloads. Compared to the 
+MSISCSOA algorithm \cite{bib:3_sandcat}, which also targets energy and delay, the method presented in 
+\cite{bib:6_marine} offers superior deadline compliance and VM usage reduction by dynamically predicting 
+workloads, addressing unpredictability in MEC with high efficiency.
+
+Furthermore, \cite{bib:7_ppps} focuses on privacy in geo-distributed data centers through Privacy-Preserving 
+Partitioning-based Scheduling (PPPS). Their results show remarkable reductions in WAN usage (up to 99\%) 
+and execution time (up to 93\%) by addressing complex multi-level privacy constraints. Unlike other studies 
+focused primarily on resource and energy efficiency \cite{bib:1_acrl}, 
+\cite{bib:3_sandcat}--\cite{bib:6_marine}, \cite{bib:8}--\cite{bib:10}, PPPS uniquely addresses regulatory 
+requirements in data privacy. This feature sets it apart as a solution for environments where data transfer 
+is restricted by privacy laws, particularly in scientific workflows operating across multiple jurisdictions.
+
+The Multi-Resource Scheduling Algorithm (MRSA), introduced in \cite{bib:8}, focuses on optimizing moldable 
+workflows in HPC systems. By allowing resource reallocation before task execution, MRSA provides a high degree 
+of flexibility, making it particularly effective in managing heterogeneous resources like CPU, memory, 
+and I/O. Unlike Actor-Critic RL used in \cite{bib:1_acrl} or FARO in \cite{bib:2_faro}, MRSA employs a 
+heuristic-based optimization strategy tailored to HPC environments. This emphasis on multi-resource 
+scheduling aligns conceptually with the multi-strategy optimization in \cite{bib:3_sandcat} but extends it 
+to include HPC-specific considerations.
+
+Hybrid Scheduling for Hybrid Clouds (HSHC), presented in \cite{bib:9}, combines static genetic algorithms 
+with dynamic adjustments to handle hybrid cloud workflows effectively. HSHC is particularly notable for its 
+data locality optimization, which minimizes data transfer costs across cloud environments. This method 
+shares similarities with EPEE \cite{bib:5_epee}, which also targets geo-distributed systems but focuses 
+on energy consumption rather than data locality. Additionally, the two-phase structure of HSHC resembles 
+PPPS \cite{bib:7_ppps}, where distinct optimization stages address different aspects of workflow scheduling.
+
+The Genetically-Modified Multi-Objective Particle Swarm Optimization (GMPSO) algorithm, proposed in 
+\cite{bib:10}, integrates genetic operations into PSO for optimizing cost and makespan in hybrid cloud 
+systems. This approach mirrors multi-objective optimization strategies seen in MSISCSOA \cite{bib:3_sandcat} 
+and FARO \cite{bib:2_faro} but differentiates itself with its unique matrix coding of tasks and resources, 
+offering more granular control over workflow execution. Compared to the heuristic-based MRSA \cite{bib:8} 
+or dynamic HSHC \cite{bib:9}, GMPSO is better suited for scenarios requiring simultaneous optimization of 
+multiple objectives.
+
+
+
+\section{Results}
+The ten reviewed studies exhibit significant advancements in workflow scheduling, each tailored to address 
+specific challenges within diverse computing environments. This section analyzes the similarities and differences 
+in their results, highlighting shared achievements, unique strengths, and limitations.
+
+\subsection{Execution Time Optimization}
+All studies emphasize minimizing execution time as a primary objective, yet their methods and results vary depending 
+on the targeted environment and algorithmic approach:
+\begin{itemize}
+    \item Algorithm in the \cite{bib:1_acrl} achieve a 35\% improvement in DAG processing speed, demonstrating the effectiveness of 
+    Actor-Critic RL in prioritizing task dependencies in HPC environments. This result parallels the performance of MRSA 
+    in \cite{bib:8}, which also focuses on HPC workflows but achieves optimization by dynamically reallocating 
+    resources before execution.
+
+    \item Similarly, HSHC in \cite{bib:9} reduces execution time by 25\% in hybrid cloud environments through 
+    a combination of genetic algorithms and dynamic scheduling, while GMPSO in \cite{bib:10} balances execution
+    time with cost, offering superior performance for hybrid systems.
+
+    \item Edge computing approaches, such as MSISCSOA in \cite{bib:3_sandcat}, reduce task delay by 21.38\%, emphasizing 
+    latency-critical applications like IoT. In contrast, OMPA in \cite{bib:6_marine} reduces missed deadlines, improving 
+    response times for mobile edge systems.
+\end{itemize}
+
+\noindent \textbf{Similarities:}
+\begin{itemize}
+    \item A universal focus on reducing makespan and task delays.
+    \item All algorithms optimize task dependencies, whether in DAG-based workflows, used in \cite{bib:1_acrl},
+    or moldable workflows in \cite{bib:8}.
+\end{itemize}
+
+\noindent \textbf{Differences:}
+\begin{itemize}
+    \item Methods such as PPPS, presented in \cite{bib:7_ppps}, while achieving a 93\% reduction in execution time, 
+    also prioritize privacy, showing that execution time optimization is often coupled with other objectives.
+\end{itemize}
+
+\subsection{Energy Efficiency}
+Energy optimization emerges as a critical concern, particularly for edge and cloud systems:
+\begin{itemize}
+    \item EPEE, presented in \cite{bib:5_epee}, stands out with significant reductions in energy consumption, 
+    leveraging DVFS to adapt workloads across geographically distributed data centers. This focus on 
+    energy efficiency is echoed by MSISCSOA in \cite{bib:3_sandcat}, which reduces energy use by 19.56\%, balancing it with 
+    delay optimization.
+
+    \item The marine-predator-based approach in OMPA, used in \cite{bib:6_marine} introduces innovative 
+    methods for minimizing energy use while ensuring optimal workload distribution, aligning with the 
+    energy-saving principles of FARO in \cite{bib:2_faro}.
+\end{itemize}
+
+\noindent \textbf{Similarities:}
+\begin{itemize}
+    \item Both edge (e.g., MSISCSOA in \cite{bib:3_sandcat}) and cloud systems (e.g., EPEE in 
+    \cite{bib:5_epee}) employ heuristic methods to balance energy and resource utilization.
+\end{itemize}
+
+\noindent \textbf{Differences:}
+\begin{itemize}
+    \item Energy savings in edge systems, such as in \cite{bib:3_sandcat}, focus on reducing latency-related 
+    power usage, whereas cloud-centric approaches like in \cite{bib:5_epee} emphasize operational cost 
+    savings tied to energy tariffs.
+\end{itemize}
+
+\subsection{Cost Optimization}
+Cost reduction is another recurring objective, especially in hybrid and cloud environments:
+\begin{itemize}
+    \item HSHC, presented in \cite{bib:9}, achieves a 40\% reduction in workflow costs, demonstrating the 
+    value of hybrid approaches that adapt resource allocations dynamically based on workload changes.
+
+    \item GMPSO, used in \cite{bib:10}, similarly balances cost and makespan, leveraging genetic enhancements 
+    to outperform traditional PSO and heuristic algorithms.
+\end{itemize}
+
+\noindent \textbf{Similarities:}
+\begin{itemize}
+    \item Cost optimization is a shared focus in cloud systems (e.g., HSHC in \cite{bib:9} and GMPSO in \cite{bib:10})
+    and MEC environments (e.g., FARO in \cite{bib:2_faro}), highlighting the relevance of balancing resource use with financial 
+    constraints.
+\end{itemize}
+
+\noindent \textbf{Differences:}
+\begin{itemize}
+    \item Privacy-aware systems, such as PPPS in \cite{bib:7_ppps}, address cost indirectly 
+    through WAN usage reduction rather than explicit cost optimization.
+\end{itemize}
+
+\subsection{Privacy and Data Locality}
+Privacy preservation is a unique dimension, primarily addressed in PPPS approach in \cite{bib:7_ppps}, 
+which minimizes WAN usage by 99\% while ensuring compliance with data privacy regulations. This 
+trade-off between performance and privacy is distinct from the goals of other studies, which do not 
+explicitly address data protection.
+\begin{itemize}
+    \item However, HSHC, presented in \cite{bib:9}, and FARO in \cite{bib:2_faro} share similarities 
+    with PPPS, used in \cite{bib:7_ppps}, in their focus on data locality, reducing data transfer costs while 
+    optimizing task allocation.
+\end{itemize}
+
+\noindent \textbf{Similarities:}
+\begin{itemize}
+    \item Data locality optimization is a shared focus, particularly in hybrid cloud environments 
+    (e.g., HSHC in \cite{bib:9}).
+\end{itemize}
+
+\noindent \textbf{Differences:}
+\begin{itemize}
+    \item Privacy-specific objectives, such as those in \cite{bib:7_ppps}, highlight a unique focus that is not 
+    present in energy- or cost-driven methods.
+\end{itemize}
+
+\subsection{Resource Utilization and Scalability}
+Efficient resource utilization is central to all studies, yet the methods vary significantly:
+\begin{itemize}
+    \item MRSA in \cite{bib:8} optimizes multi-resource workflows by reallocating CPU, memory, 
+    and I/O dynamically, showing scalability in HPC environments.
+    \item Similarly, EFaaS, used in \cite{bib:4_faas}, dynamically prioritizes tasks using a 
+    bidding mechanism, ensuring fairness in multi-user environments.
+\end{itemize}
+
+\noindent \textbf{Similarities:}
+\begin{itemize}
+    \item Dynamic resource allocation is universally employed to address workload variability.
+\end{itemize}
+
+\noindent \textbf{Differences:}
+\begin{itemize}
+    \item Resource-specific optimizations, such as multi-resource allocation in \cite{bib:8}, differ 
+    from privacy-focused allocations in \cite{bib:7_ppps} or energy-aware distributions in \cite{bib:5_epee}.
+\end{itemize}
+
+
+
+\cleardoublepage
+\phantomsection
+\newpage
+\addcontentsline{toc}{section}{Conclusion}
+\section*{Conclusion}
+This review highlights the strengths and limitations of each method, demonstrating the diversity in 
+workflow scheduling needs across different computational architectures. Each method reflects a distinct
+priority -- whether privacy, energy efficiency, latency, or resource optimization -- tailored to specific operational
+environments and regulatory constraints.
+
+Each study’s results demonstrate tangible improvements over traditional methods, 
+suggesting that the future of workflow scheduling lies in the integration of machine learning, 
+optimization, and heuristic approaches to handle the growing complexity and scale of distributed computing systems.
+
+\cleardoublepage
+\phantomsection
+\newpage
+%Список источников
+\begin{thebibliography}{0}
+	\bibitem{bib:1_acrl}
+	\href{https://doi.org/10.1016/j.future.2023.09.018}{
+    G. P Koslovski, K. Pereira, and P. R. Albuquerque, 
+    "DAG-based workflows scheduling using Actor–Critic Deep Reinforcement Learning,"
+    \textit{Future Generation Computer Systems}, vol. 150, pp. 354-363, Jan. 2024, 
+    doi: 10.1016/j.future.2023.09.018.
+    }
+
+    \bibitem{bib:2_faro}
+	\href{https://doi.org/10.1016/j.comcom.2024.107929}{
+    D. K. Sajnani, X. Li, and A. R. Mahesar,
+    "Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments,"
+    \textit{Computer Communications}, vols. 226–227, Art. no. 107929, Aug. 2024,
+    doi: 10.1016/j.comcom.2024.107929.
+    }
+
+    \bibitem{bib:3_sandcat}
+    \href{https://doi.org/10.1016/j.suscom.2024.101014}{
+    P. Jayalakshmi, S. S. Subashka Ramesh,
+    "Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for
+    heterogeneous edge computing environment,"
+    \textit{Sustainable Computing: Informatics and Systems}, vol. 43, Art. no. 101014, Sep. 2024,
+    doi: 10.1016/j.suscom.2024.101014.
+    }
+
+    \bibitem{bib:4_faas}
+	\href{https://doi.org/10.1016/j.future.2024.04.003}{
+    S. H. Mahdizadeh, S. Abrishami,
+    "An assignment mechanism for workflow scheduling in Function as a Service edge environment,"
+    \textit{Future Generation Computer Systems}, vol. 157, pp. 543-557, Aug. 2024,
+    doi: 10.1016/j.future.2024.04.003.
+    }
+
+    \bibitem{bib:5_epee}
+	\href{https://doi.org/10.1016/j.jksuci.2024.102170}{
+    M. Hussain, L.-F. Wei, A. Rehman, A. Hussain, M. Ali, and M. H. Javed,
+    "An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data
+    centers,"
+    \textit{Journal of King Saud University - Computer and Information Sciences}, vol. 36, no. 8, Oct. 2024,
+    doi: 10.1016/j.jksuci.2024.102170.
+    }
+
+    \bibitem{bib:6_marine}
+	\href{https://doi.org/10.1016/j.pmcj.2022.101715}{
+    F. Kuang, Z. Xu, and M. Masdari,
+    "Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based
+    Marine-Predator Algorithm,"
+    \textit{Pervasive and Mobile Computing}, vol. 87, Art. no. 101715, Dec. 2022,
+    doi: 10.1016/j.pmcj.2022.101715.
+    }
+
+    \bibitem{bib:7_ppps}
+	\href{https://doi.org/10.1016/j.future.2021.12.004}{
+    Y. Xiao, A. C. Zhou, X. Yang, and B. He,
+    "Privacy-preserving workflow scheduling in geo-distributed data centers,"
+    \textit{Future Generation Computer Systems}, vol. 130, pp. 46-58, May 2022,
+    doi: 10.1016/j.future.2021.12.004.
+    }
+
+    \bibitem{bib:8}
+	\href{https://doi.org/10.1016/j.jpdc.2023.104792}{
+    L. Perotin, S. Kandaswamy, H. Sun, and P. Raghavan,
+    "Multi-resource scheduling of moldable workflows,"
+    \textit{Journal of Parallel and Distributed Computing}, vol. 184, Art. no. 104792, Feb. 2024,
+    doi: 10.1016/j.jpdc.2023.104792
+    }
+
+    \bibitem{bib:9}
+	\href{https://doi.org/10.1016/j.comnet.2020.107438}{
+    A. Pasdar, Y. C. Lee, and K. Almi’ani,
+    "Hybrid scheduling for scientific workflows on hybrid clouds,"
+    \textit{Computer Networks}, vol. 181, Art. no. 107438, Nov. 2020,
+    doi: 10.1016/j.comnet.2020.107438
+    }
+
+    \bibitem{bib:10}
+	\href{https://doi.org/10.1016/j.asoc.2022.108791}{
+    H. Hafsi, H. Gharsellaoui, and S. Bouamama,
+    "Genetically-modified Multi-objective Particle Swarm Optimization approach for high-performance 
+    computing workflow scheduling,"
+    \textit{Applied Soft Computing}, vol. 122, Art. no. 108791, Jun. 2022,
+    doi: 10.1016/j.asoc.2022.108791
+    }
+\end{thebibliography}
+\addcontentsline{toc}{section}{References}
+
+\newpage
+\section* {Application A. Table comparison of methods}
+\hypertarget{ApplA}{}
+\begin{table}[H]
+    \centering
+    \caption{Comparison of Methods}
+    \label{tbl:1}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|p{2cm}|X|X|X|}
+    \hline
+    \textbf{Research paper} & \textbf{Computing environ-ment} & \textbf{Scheduling method} & 
+    \textbf{Optimiza-tion algorithm} & \textbf{Objective Function} & \textbf{Initial Data} & 
+    \textbf{Key method features} \\
+    \hline
+
+    %--Line 1--
+    % Research paper
+    DAG-based workflows scheduling using Actor–Critic Deep Reinforce-ment Learning \cite{bib:1_acrl} &
+    % Computing environment
+    Data Center (HPC) &
+    % Scheduling method
+    Actor-Critic RL &
+    % Optimization algorithm
+    Deep Reinforce-ment Learning (DRL) &
+    % Objective Function
+    Minimize task delay and maximize efficiency &
+    % Initial Data
+    HPC resources as DAG &
+    % Key method features
+    Deep learning for adaptive queue management policies \\
+    \hline
+
+    %--Line 2--
+    % Research paper
+    Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments \cite{bib:2_faro} &
+    % Computing environment
+    Mobile Edge Computing (MEC) &
+    % Scheduling method
+    Feedback Artificial Tree (FAT) &
+    % Optimization algorithm
+    Remora Optimization Algorithm (ROA) &
+    % Objective Function
+    Optimize CPU, memory, encryption time &
+    % Initial Data
+    MEC resources and tasks &
+    % Key method features
+    Hybrid approach for enhanced security and efficiency \\
+    \hline
+
+    %--Line 3--
+    % Research paper
+    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heteroge-neous edge computing environment \cite{bib:3_sandcat} &
+    % Computing environment
+    Hybrid Cloud-Edge Computing &
+    % Scheduling method
+    Sand Cat Optimization (SCOA) &
+    % Optimization algorithm
+    MSISCSOA (Heuristic Swarm Optimization) &
+    % Objective Function
+    Minimize delay and energy consumption &
+    % Initial Data
+    Edge computing resources &
+    % Key method features
+    Multi-strategy approach with dynamic search \\
+    \hline
+
+    %--Line 4--
+    % Research paper
+    An assignment mechanism for workflow scheduling in Function as a Service edge environment \cite{bib:4_faas} &
+    % Computing environment
+    Edge Function as a Service (FaaS) &
+    % Scheduling method
+    Highest Bid First (HBFM), Warm Function First (WFFM) &
+    % Optimization algorithm
+    Bidding + Priority Mechanisms &
+    % Objective Function
+    Minimize makespan &
+    % Initial Data
+    EFaaS resources &
+    % Key method features
+    Bidding-based and priority assignment mechanisms \\
+    \hline
+
+    %--Line 5--
+    % Research paper
+    An electricity price and energy-efficient workflow scheduling in geographi
+    cally distributed cloud data centers \cite{bib:5_epee} &
+    % Computing environment
+    Geo-distributed cloud data centers &
+    % Scheduling method
+    Task ranking and data center selection &
+    % Optimization algorithm
+    Dynamic Voltage and Frequency Scaling (DVFS) &
+    % Objective Function
+    Minimize electricity costs &
+    % Initial Data
+    Geo-distributed cloud data &
+    % Key method features
+    Uses DVFS and variable energy tariffs \\
+    \hline
+
+    %--Line 6--
+    % Research paper
+    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
+    % Computing environment
+    Mobile Edge Computing (MEC) &
+    % Scheduling method
+    Marine Predator Algorithm (MPA) &
+    % Optimization algorithm
+    Opposition-based Marine Predator Algorithm (OMPA) &
+    % Objective Function
+    Reduce missed deadlines, minimize VMs &
+    % Initial Data
+    Historical IoT data in MEC &
+    % Key method features
+    Uses opposition-based learning to avoid local minima \\
+    \hline
+
+    %--Line 7--
+    % Research paper
+    Privacy-preserving workflow scheduling in geo-distributed data centers \cite{bib:7_ppps} &
+    % Computing environment
+    Geo-distributed DCs &
+    % Scheduling method
+    Privacy-Preserving Graph Partitioning &
+    % Optimization algorithm
+    Privacy-Aware Refinement &
+    % Objective Function
+    WAN usage and privacy adherence &
+    % Initial Data
+    Geo-distributed DCs with privacy levels &
+    % Key method features
+    Two-stage privacy-preserving workflow scheduling \\
+    \hline
+
+    %--Line 8--
+    % Research paper
+    Multi-resource scheduling of moldable workflows \cite{bib:8} &
+    % Computing environment
+    HPC systems &
+    % Scheduling method
+    Multi-resource optimization &
+    % Optimization algorithm
+    MRSA (Resource-aware Scheduling) &
+    % Objective Function
+    Reduce makespan while preserving data privacy &
+    % Initial Data
+    Moldable workflows &
+    % Key method features
+    Enables pre-execution resource adjustments \\
+    \hline
+
+    
+    %--Line 9--
+    % Research paper
+    Hybrid scheduling for scientific workflows on hybrid clouds \cite{bib:9} &
+    % Computing environment
+    Hybrid clouds &
+    % Scheduling method
+    Two-phase Scheduling (Static/ Dynamic) &
+    % Optimization algorithm
+    HSHC (Genetic + Dynamic Adjustment) &
+    % Objective Function
+    Reduce cost, improve time &
+    % Initial Data
+    Scientific workflows &
+    % Key method features
+    Handles data locality dynamically \\
+    \hline
+
+    %--Line 10--
+    % Research paper
+    Genetically-modified Multi-objective Particle Swarm Optimization approach for 
+    high-performance computing workflow scheduling \cite{bib:10} &
+    % Computing environment
+    Hybrid cloud + HPC &
+    % Scheduling method
+    Task Mapping via Matrix Encoding &
+    % Optimization algorithm
+    GMPSO (Genetic + PSO) &
+    % Objective Function
+    Optimize cost and makespan &
+    % Initial Data
+    HPC workflows &
+    % Key method features
+    Introduces genetic operations into PSO \\
+    \hline
+    \end{tabularx}
+\end{table}
+\addcontentsline{toc}{section}{Application A. Table comparison of methods}
+
+\newpage
+\cleardoublepage
+\phantomsection
+\appendix
+\section* {Application B. Table comparison of results}
+\hypertarget{ApplB}{}
+\addcontentsline{toc}{section}{Application B. Table comparison of results}
+\begin{table}[H]
+    \centering
+    \caption{Comparison of Results}
+    \label{tbl:2}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|X|X|X|X|}
+    \hline
+    \textbf{Research paper} & \textbf{Perfomance metrics} & \textbf{Key result} & \textbf{Experimental Data} \\
+    \hline
+
+    %--Line 1--
+    % Research paper
+    DAG-based workflows scheduling using Actor–Critic Deep Reinforce-ment Learning \cite{bib:1_acrl} &
+    % Perfomance metrics
+    Makespan, latency, throughput &
+    % Key result
+    Improved over FCFS and SPT methods &
+    % Experimental Data
+    HPC simulations, DAG graphs \\
+    \hline
+
+    %--Line 2--
+    % Research paper
+    Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments \cite{bib:2_faro} &
+    % Perfomance metrics
+    CPU, memory, encryption, security &
+    % Key result
+    Reduction in CPU (0.012), memory (0.010) &
+    % Experimental Data
+    MEC simulations and real data \\
+    \hline
+
+    %--Line 3--
+    % Research paper
+    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heterogeneous edge computing environment \cite{bib:3_sandcat} &
+    % Perfomance metrics
+    Delay, energy consumption &
+    % Key result
+    Reduced delay by 21.38\%, energy by 19.56\% &
+    % Experimental Data
+    iFogSim testing \\
+    \hline
+
+    %--Line 4--
+    % Research paper
+    An assignment mechanism for workflow scheduling in Function as a Service edge environment \cite{bib:4_faas} &
+    % Perfomance metrics
+    Makespan, resource utilization &
+    % Key result
+    Efficient resource allocation in multi-user EFaaS &
+    % Experimental Data
+    EFaaS simulation with task prioritization \\
+    \hline
+
+    %--Line 5--
+    % Research paper
+    An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data centers \cite{bib:5_epee} &
+    % Perfomance metrics
+    Energy cost, resource use &
+    % Key result
+    Significant reduction in energy costs &
+    % Experimental Data
+    Simulations in geo-distributed cloud (CloudSim) \\
+    \hline
+
+    %--Line 6--
+    % Research paper
+    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
+    % Perfomance metrics
+    Missed deadlines, VMs &
+    % Key result
+    Reduction in missed deadlines and VMs required &
+    % Experimental Data
+    iFogSim with NASA and Saskatchewan data \\
+    \hline
+
+    %--Line 7--
+    % Research paper
+    Privacy-preserving workflow scheduling in geo-distributed data centers \cite{bib:7_ppps} &
+    % Perfomance metrics
+    Makespan, WAN usage, Security &
+    % Key result
+    Reduced makespan by 93\%, WAN usage by 99\% while preserving privacy constraints &
+    % Experimental Data
+    Windows Azure simulation with real-world data \\
+    \hline
+
+    %--Line 8--
+    % Research paper
+    Multi-resource scheduling of moldable workflows \cite{bib:8} &
+    % Perfomance metrics
+    Makespan, Resource Allocation Efficiency &
+    % Key result
+    Improved makespan for HPC workflows &
+    % Experimental Data
+    HPC simulations with moldable workflows \\
+    \hline
+
+    %--Line 9--
+    % Research paper
+    Hybrid scheduling for scientific workflows on hybrid clouds \cite{bib:9} &
+    % Perfomance metrics
+    Cost Reduction, Makespan &
+    % Key result
+    40\% cost reduction and 25\% faster execution &
+    % Experimental Data
+    Hybrid cloud (real-world + simulated workflows) \\
+    \hline
+
+    %--Line 10--
+    % Research paper
+    Genetically-modified Multi-objective Particle Swarm Optimization
+    approach for high-performance computing workflow scheduling \cite{bib:10} &
+    % Perfomance metrics
+    Cost and Makespan Balancing &
+    % Key result
+    Superior cost and makespan optimization &
+    % Experimental Data
+    Simulated hybrid workflows (CloudSim) \\
+    \hline
+    \end{tabularx}
+\end{table}
+
+\end{document}
