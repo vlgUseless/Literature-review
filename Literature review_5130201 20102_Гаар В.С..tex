@@ -3,7 +3,7 @@
 \usepackage[14pt]{extsizes} % для того чтобы задать нестандартный 14-ый размер шрифта
 \usepackage[T2A]{fontenc}
 \usepackage[UTF8]{inputenc}
-\usepackage[russian]{babel}
+\usepackage[english]{babel}
 \usepackage{listings} %листинги
 \usepackage{amsmath}
 \usepackage{amssymb} % Для красивого значка пустого множества
@@ -93,106 +93,11 @@ stringstyle =\bfseries} % шрифт для строк
 \topmargin=-1.5cm % отступ от верхнего края
 \parindent=24pt % абзацный отступ
 \parskip=0pt % интервал между абзацами
-\tolerance=2000 % терпимость к "жидким" строкам
+\tolerance=2000 % терпимость к ``жидким`` строкам
 \flushbottom % выравнивание высоты страниц
 
 \begin{document} % начало документа
 \setcounter{tocdepth}{2} % Вложенность не больше 2 в содержании
-\lstset{
-  language=haskell, % Язык кода по умолчанию
-  morekeywords={*,...}, % если хотите добавить ключевые слова, то добавляйте
-  % Цвета
-  keywordstyle=\color{keyword}\ttfamily\bfseries,
-  %stringstyle=\color{string}\ttfamily,
-  stringstyle=\ttfamily\color{red!50!brown},
-  commentstyle=\color{comment}\ttfamily,
-  morecomment=[l][\color{morecomment}]{\#},
-  % Настройки отображения
-  breaklines=true, % Перенос длинных строк
-  basicstyle=\ttfamily\footnotesize, % Шрифт для отображения кода
-  backgroundcolor=\color{bk}, % Цвет фона кода
-  frame=single,xleftmargin=\fboxsep,xrightmargin=-\fboxsep, % Рамка, подогнанная к заголовку
-  rulecolor=\color{frame}, % Цвет рамки
-  tabsize=3, % Размер табуляции в пробелах
-  % Настройка отображения номеров строк. Если не нужно, то удалите весь блок
-  numbers=left, % Слева отображаются номера строк
-  stepnumber=1, % Каждую строку нумеровать
-  numbersep=5pt, % Отступ от кода
-  numberstyle=\small\color{black}, % Стиль написания номеров строк
-  % Для отображения русского языка
-  extendedchars=true,
-  literate={Ö}{ {\"O} }1
-  {~}{ {\textasciitilde} }1
-  {а}{ {\selectfont\char224} }1
-  {б}{ {\selectfont\char225} }1
-  {в}{ {\selectfont\char226} }1
-  {г}{ {\selectfont\char227} }1
-  {д}{ {\selectfont\char228} }1
-  {е}{ {\selectfont\char229} }1
-  {ё}{ {\"e} }1
-  {ж}{ {\selectfont\char230} }1
-  {з}{ {\selectfont\char231} }1
-  {и}{ {\selectfont\char232} }1
-  {й}{ {\selectfont\char233} }1
-  {к}{ {\selectfont\char234} }1
-  {л}{ {\selectfont\char235} }1
-  {м}{ {\selectfont\char236} }1
-  {н}{ {\selectfont\char237} }1
-  {о}{ {\selectfont\char238} }1
-  {п}{ {\selectfont\char239} }1
-  {р}{ {\selectfont\char240} }1
-  {с}{ {\selectfont\char241} }1
-  {т}{ {\selectfont\char242} }1
-  {у}{ {\selectfont\char243} }1
-  {ф}{ {\selectfont\char244} }1
-  {х}{ {\selectfont\char245} }1
-  {ц}{ {\selectfont\char246} }1
-  {ч}{ {\selectfont\char247} }1
-  {ш}{ {\selectfont\char248} }1
-  {щ}{ {\selectfont\char249} }1
-  {ъ}{ {\selectfont\char250} }1
-  {ы}{ {\selectfont\char251} }1
-  {ь}{ {\selectfont\char252} }1
-  {э}{ {\selectfont\char253} }1
-  {ю}{ {\selectfont\char254} }1
-  {я}{ {\selectfont\char255} }1
-  {А}{ {\selectfont\char192} }1
-  {Б}{ {\selectfont\char193} }1
-  {В}{ {\selectfont\char194} }1
-  {Г}{ {\selectfont\char195} }1
-  {Д}{ {\selectfont\char196} }1
-  {Е}{ {\selectfont\char197} }1
-  {Ё}{ {\"E} }1
-  {Ж}{ {\selectfont\char198} }1
-  {З}{ {\selectfont\char199} }1
-  {И}{ {\selectfont\char200} }1
-  {Й}{ {\selectfont\char201} }1
-  {К}{ {\selectfont\char202} }1
-  {Л}{ {\selectfont\char203} }1
-  {М}{ {\selectfont\char204} }1
-  {Н}{ {\selectfont\char205} }1
-  {О}{ {\selectfont\char206} }1
-  {П}{ {\selectfont\char207} }1
-  {Р}{ {\selectfont\char208} }1
-  {С}{ {\selectfont\char209} }1
-  {Т}{ {\selectfont\char210} }1
-  {У}{ {\selectfont\char211} }1
-  {Ф}{ {\selectfont\char212} }1
-  {Х}{ {\selectfont\char213} }1
-  {Ц}{ {\selectfont\char214} }1
-  {Ч}{ {\selectfont\char215} }1
-  {Ш}{ {\selectfont\char216} }1
-  {Щ}{ {\selectfont\char217} }1
-  {Ъ}{ {\selectfont\char218} }1
-  {Ы}{ {\selectfont\char219} }1
-  {Ь}{ {\selectfont\char220} }1
-  {Э}{ {\selectfont\char221} }1
-  {Ю}{ {\selectfont\char222} }1
-  {Я}{ {\selectfont\char223} }1
-  {\{}{ { {\color{brackets}\{} } }1 % Цвет скобок {
-  {\} }{ { {\color{brackets}\} } } }1 % Цвет скобок }
-}
-
 % НАЧАЛО ТИТУЛЬНОГО ЛИСТА
 \begin{center}
     \hfill \break
@@ -208,7 +113,7 @@ stringstyle =\bfseries} % шрифт для строк
     \hfill \break
     \hfill \break
     \large{\textbf{Literature Review}}\\
-    \large{\textit{Workflow scheduling algorithms for HPC and cloud environments}}\\
+    \large{\textit{Workflow Scheduling Algorithms for High-Performance Computing and Cloud Environments}}\\
     
     \hfill \break
     \hfill \break
@@ -233,14 +138,31 @@ stringstyle =\bfseries} % шрифт для строк
 
 % КОНЕЦ ТИТУЛЬНОГО ЛИСТА
 \newpage
+
+\section*{Abstract}
+Workflow scheduling is critical in optimizing the performance of high-performance computing (HPC) and 
+cloud environments, where efficient resource allocation and task execution are paramount. This literature 
+review provides a comprehensive comparative analysis of ten advanced workflow scheduling algorithms developed 
+for various computing environments, including HPC, mobile edge computing (MEC), cloud computing, and hybrid systems. 
+The methodologies are examined concerning their mathematical foundations, optimization techniques, application domains, 
+and adaptability to dynamic workloads and system scalability. Performance outcomes are analyzed based on execution time 
+optimization, energy efficiency, cost reduction, privacy preservation, and resource utilization. The review identifies 
+common strengths such as adaptability and multi-objective optimization, while also highlighting key differences and 
+trade-offs in addressing conflicting objectives. Limitations are discussed, and future research directions are proposed, 
+including the integration of renewable energy sources, enhanced privacy mechanisms, and the exploration of hybrid 
+optimization techniques. The findings underscore the significant role of advanced scheduling algorithms in improving 
+system performance and resource management in HPC and cloud environments.
+
+\newpage
 \section*{Keywords}
-Workflow scheduling, HPC, MEC, cloud, DAG, tasks, jobs, DC, privacy.
+Workflow Scheduling, High-Performance Computing (HPC), Mobile Edge Computing (MEC), Cloud Computing, 
+Directed Acyclic Graph (DAG), Resource Allocation, Data Privacy, Optimization Algorithms, 
+Energy Efficiency, Latency Reduction.
 
 \newpage
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{section}{Introduction}
-\section*{Introduction}
+\section{Introduction}
 Workflow scheduling plays a pivotal role in modern computing environments, where the complexity and scale of tasks have 
 grown exponentially. These environments include High-Performance Computing (HPC) \cite{bib:1_acrl}, Mobile Edge 
 Computing (MEC) \cite{bib:2_faro}, \cite{bib:6_marine}, Edge Function as a Service (Edge FaaS) \cite{bib:4_faas}, 
@@ -315,8 +237,138 @@ their strengths, limitations, and potential for integration into future systems.
 field by addressing the pressing need for scalable, energy-efficient, and privacy-compliant workflow scheduling, 
 offering insights into how these methods can be adapted for the evolving landscape of distributed computing.
 
+The review is structured as follows: Section 2 provides background and context, discussing the 
+significance of workflow scheduling, the challenges faced, and the evolution from traditional to 
+advanced algorithms. Section 3 presents a comparative analysis of the scheduling methods, including a 
+detailed examination of their mathematical and programming approaches, optimization techniques, 
+application domains, and adaptability. Section 4 analyzes and compares the performance outcomes of the 
+algorithms based on key metrics. Section 5 synthesizes the findings, highlighting common strengths, key differences, and practical 
+implications. Section 6 proposes future research directions based on identified gaps and limitations. Finally, Section 7 
+concludes the review by summarizing the main findings and emphasizing the contributions of advanced scheduling algorithms 
+to HPC and cloud environments.
+
 \newpage
-\section{General analysis}
+\section{Background and Context}
+\subsection{Workflow Scheduling in HPC and Cloud Environ-ments}
+Workflow scheduling is the process of mapping and managing the execution of interdependent computational tasks 
+across available resources to optimize specific performance criteria. In HPC and cloud environments, workflows often 
+consist of complex applications that require significant computational power and efficient resource management. The 
+representation of workflows as Directed Acyclic Graphs (DAGs) allows for a structured depiction of tasks and their 
+dependencies, facilitating the development of scheduling strategies that can handle complex interrelations among tasks.
+
+In HPC environments, workflow scheduling aims to maximize resource utilization and minimize execution times for applications 
+such as scientific simulations, data analysis, and machine learning tasks. Cloud environments introduce additional 
+considerations, including resource elasticity, virtualization, and cost models based on resource usage. The integration 
+of edge computing and MEC further complicates scheduling due to the need for low-latency processing and the limitations 
+of edge devices in terms of computational capacity and energy resources.
+
+\subsection{Challenges in Workflow Scheduling}
+Workflow scheduling faces several challenges in modern computing environments:
+\begin{itemize}
+    \item Heterogeneous Resources: Computing environments comprise a diverse range of resources with varying capabilities, 
+    such as CPUs, GPUs, memory capacities, and network bandwidths. Scheduling algorithms must account for this heterogeneity 
+    to optimize performance and resource utilization.
+    \item Dynamic Workloads: Workloads can fluctuate unpredictably due to varying user demands and application requirements. 
+    Scheduling strategies need to be adaptive to handle real-time changes in workload intensity and resource availability.
+
+    \item Data Privacy and Compliance: The distribution of data across different geographic regions introduces challenges related 
+    to data privacy regulations, such as the General Data Protection Regulation (GDPR). Scheduling algorithms must ensure compliance 
+    by incorporating data locality and privacy-preserving mechanisms.
+    
+    \item Energy Efficiency and Cost Optimization: Reducing energy consumption is crucial for both environmental sustainability 
+    and operational cost savings. Scheduling methods must balance performance objectives with energy efficiency considerations.
+    
+    \item Latency and Quality of Service (QoS): Applications in MEC and IoT environments often have strict latency requirements. 
+    Scheduling algorithms must minimize delays to meet QoS demands while managing limited computational resources.
+\end{itemize}
+
+\subsection{Traditional vs. Advanced Scheduling Algorithms}
+Traditional scheduling algorithms, such as First-Come, First-Served (FCFS) and Shortest Processing Time (SPT), 
+are generally static and heuristic-based. While they offer simplicity and ease of implementation, they lack the 
+flexibility to adapt to dynamic and heterogeneous computing environments. These methods often fail to consider the 
+complex dependencies and resource constraints inherent in modern workflows, leading to suboptimal performance and 
+resource utilization.
+
+Advanced scheduling algorithms have emerged to address these limitations. By leveraging machine learning techniques, 
+metaheuristic optimization, and hybrid approaches, these methods provide enhanced adaptability and efficiency. 
+For instance, reinforcement learning allows scheduling policies to be learned and optimized based on continuous feedback 
+from the environment. Metaheuristic algorithms, such as genetic algorithms and particle swarm optimization, enable the 
+exploration of large solution spaces to find near-optimal scheduling configurations. Hybrid approaches combine multiple optimization strategies to balance global exploration and local exploitation effectively.
+
+These advanced algorithms are better equipped to handle the complexities of modern computing environments, offering the 
+potential to improve performance metrics significantly while accommodating the dynamic nature of workloads and resource availability.
+
+
+\section{Comparative Analysis of Scheduling Methods}
+\subsection{Overview of Scheduling Methods}
+The ten selected research articles present a diverse range of scheduling methods tailored to specific computing 
+environments and objectives:
+\begin{enumerate}
+\item \cite{bib:1_acrl}: Utilizes Actor-Critic Reinforcement Learning (ACRL) for scheduling DAG-based
+workflows in HPC data centers, aiming to minimize task delays and optimize resource utilization.
+
+\item \cite{bib:2_faro}: Introduces the Feedback Artificial Remora Optimization (FARO) algorithm for 
+secure workflow scheduling in MEC environments, focusing on reducing CPU and memory utilization while 
+enhancing security.
+
+\item \cite{bib:3_sandcat}: Proposes the Multi-Strategy Improved Sand Cat Optimization Algorithm 
+(MSISCSOA) for workflow scheduling in heterogeneous edge computing environments, targeting the 
+minimization of execution latency and energy consumption.
+
+\item \cite{bib:4_faas}: Develops an assignment mechanism inspired by the course allocation problem 
+for scheduling workflows in Edge Function as a Service (EFaaS) environments, emphasizing efficient 
+resource allocation and reduced execution times.
+
+\item \cite{bib:5_epee}: Presents the Electricity Price and Energy-Efficient (EPEE) scheduling framework 
+for geographically distributed cloud data centers, incorporating dynamic electricity pricing and energy 
+consumption optimization.
+
+\item \cite{bib:6_marine}: Proposes an opposition-based Marine Predator Algorithm (OMPA) combined with 
+workload prediction using artificial neural networks for multi-workflow scheduling in MEC environments.
+
+\item \cite{bib:7_ppps}: Introduces the Privacy-Preserving Partitioning-based Scheduling Algorithm 
+(PPPS) for geo-distributed data centers, addressing privacy constraints and network heterogeneity.
+
+\item \cite{bib:8}: Presents a multi-resource scheduling algorithm for moldable workflows in HPC 
+systems, focusing on maximizing resource utilization and minimizing workflow execution times.
+
+\item \cite{bib:9}: Proposes Hybrid Scheduling for Hybrid Clouds (HSHC), combining genetic 
+algorithms with dynamic adjustments to optimize the scheduling of scientific workflows in hybrid 
+cloud environments.
+
+\item  \cite{bib:10}: Develops a Genetically-Modified Multi-objective Particle Swarm Optimization 
+(GM-MOPSO) approach for HPC workflow scheduling, aiming to balance execution time and energy efficiency.
+\end{enumerate}
+
+\subsection{Detailed Comparative Analysis}
+% \subsubsection{Mathematical and Programming Approaches}
+% The mathematical foundations and programming frameworks employed in these studies vary significantly:
+% \begin{itemize}
+%     \item Reinforcement Learning: \cite{bib:1_acrl} leverages Actor-Critic Deep Reinforcement Learning, where the actor selects 
+%     scheduling policies based on the current state, and the critic evaluates the performance, enabling the system to learn 
+%     optimal scheduling strategies without pre-labeled datasets.
+
+%     \item Hybrid Optimization Algorithms: \cite{bib:2_faro} combines the Feedback Artificial Tree (FAT) and Remora Optimization Algorithm 
+%     (ROA) to balance local adaptability and global optimization. \cite{bib:3_sandcat} enhances the Sand Cat Optimization Algorithm with 
+%     multi-strategy improvements, including random variation, elite collaboration, and opposition-based learning.
+    
+%     \item Metaheuristic Algorithms: \cite{bib:6_marine} employs the Marine Predator Algorithm (MPA) with opposition-based learning to 
+%     improve search capabilities and avoid local optima. \cite{bib:10} integrates genetic operators into Particle Swarm Optimization, 
+%     enhancing solution diversity and convergence.
+    
+%     \item Graph Partitioning and Privacy Preservation: \cite{bib:7_ppps} utilizes graph partitioning techniques to minimize WAN usage 
+%     while adhering to privacy constraints, introducing a two-stage optimization method that includes privacy-aware workflow 
+%     partitioning and heterogeneity-aware scheduling refinement.
+    
+%     \item Resource Allocation Models: \cite{bib:4_faas} introduces a bidding-based assignment mechanism, inspired by course allocation 
+%     problems, to optimize resource allocation in EFaaS environments. \cite{bib:5_epee} incorporates dynamic voltage and frequency scaling 
+%     (DVFS) into the scheduling model to reduce energy consumption based on workload requirements.
+% \end{itemize}
+
+% Programming frameworks used include Python and TensorFlow for machine learning implementations (\cite{bib:1_acrl}, 
+% \cite{bib:6_marine}), and simulation environments such as iFogSim, CloudSim, and custom-built simulators for performance evaluation.
+
+% \subsubsection{Detailed comparison}
 
 An Actor-Critic RL approach was used in \cite{bib:1_acrl}, designed to reduce task delays in high-performance 
 computing environments. By framing task scheduling as a directed acyclic graph (DAG), this method allows 
@@ -391,12 +443,30 @@ multiple objectives.
 
 
 
-\section{Results}
+\section{Comparative Analysis of Results}
+\subsection{Overview of Performance Metrics}
+The performance metrics used to evaluate the scheduling algorithms include:
+\begin{itemize}
+    \item Execution Time (Makespan) Optimization: The total time required to execute the entire workflow.
+
+    \item Energy Efficiency: The amount of energy consumed during task execution, with an emphasis 
+    on reducing overall energy usage.
+    
+    \item Cost Optimization: Operational costs associated with resource usage and energy consumption.
+    
+    \item Privacy Preservation and Data Locality: Compliance with data privacy regulations and 
+    optimization of data placement to reduce data transfer costs and latency.
+    
+    \item Resource Utilization and Scalability: Effective use of available resources and the ability 
+    to scale with increasing workloads.
+\end{itemize}
+
+\subsection{Detailed Comparative Analysis}
 The ten reviewed studies exhibit significant advancements in workflow scheduling, each tailored to address 
 specific challenges within diverse computing environments. This section analyzes the similarities and differences 
 in their results, highlighting shared achievements, unique strengths, and limitations.
 
-\subsection{Execution Time Optimization}
+\subsubsection{Execution Time Optimization}
 All studies emphasize minimizing execution time as a primary objective, yet their methods and results vary depending 
 on the targeted environment and algorithmic approach:
 \begin{itemize}
@@ -427,7 +497,7 @@ on the targeted environment and algorithmic approach:
     also prioritize privacy, showing that execution time optimization is often coupled with other objectives.
 \end{itemize}
 
-\subsection{Energy Efficiency}
+\subsubsection{Energy Efficiency}
 Energy optimization emerges as a critical concern, particularly for edge and cloud systems:
 \begin{itemize}
     \item EPEE, presented in \cite{bib:5_epee}, stands out with significant reductions in energy consumption, 
@@ -435,7 +505,7 @@ Energy optimization emerges as a critical concern, particularly for edge and clo
     energy efficiency is echoed by MSISCSOA in \cite{bib:3_sandcat}, which reduces energy use by 19.56\%, balancing it with 
     delay optimization.
 
-    \item The marine-predator-based approach in OMPA, used in \cite{bib:6_marine} introduces innovative 
+    \item The marine-predator-based approach in OMPA, used in \cite{bib:6_marine}, introduces innovative 
     methods for minimizing energy use while ensuring optimal workload distribution, aligning with the 
     energy-saving principles of FARO in \cite{bib:2_faro}.
 \end{itemize}
@@ -453,7 +523,7 @@ Energy optimization emerges as a critical concern, particularly for edge and clo
     savings tied to energy tariffs.
 \end{itemize}
 
-\subsection{Cost Optimization}
+\subsubsection{Cost Optimization}
 Cost reduction is another recurring objective, especially in hybrid and cloud environments:
 \begin{itemize}
     \item HSHC, presented in \cite{bib:9}, achieves a 40\% reduction in workflow costs, demonstrating the 
@@ -476,7 +546,7 @@ Cost reduction is another recurring objective, especially in hybrid and cloud en
     through WAN usage reduction rather than explicit cost optimization.
 \end{itemize}
 
-\subsection{Privacy and Data Locality}
+\subsubsection{Privacy and Data Locality}
 Privacy preservation is a unique dimension, primarily addressed in PPPS approach in \cite{bib:7_ppps}, 
 which minimizes WAN usage by 99\% while ensuring compliance with data privacy regulations. This 
 trade-off between performance and privacy is distinct from the goals of other studies, which do not 
@@ -499,7 +569,7 @@ explicitly address data protection.
     present in energy- or cost-driven methods.
 \end{itemize}
 
-\subsection{Resource Utilization and Scalability}
+\subsubsection{Resource Utilization and Scalability}
 Efficient resource utilization is central to all studies, yet the methods vary significantly:
 \begin{itemize}
     \item MRSA in \cite{bib:8} optimizes multi-resource workflows by reallocating CPU, memory, 
@@ -519,21 +589,141 @@ Efficient resource utilization is central to all studies, yet the methods vary s
     from privacy-focused allocations in \cite{bib:7_ppps} or energy-aware distributions in \cite{bib:5_epee}.
 \end{itemize}
 
+\section{Synthesis and Discussion}
+\subsection{Common Strengths and Innovations}
+Several common strengths and innovative approaches emerge from the comparative analysis:
+\begin{itemize}
+    \item Adaptability: Many algorithms incorporate mechanisms to adapt to dynamic workloads and resource availability, 
+    enhancing their effectiveness in heterogeneous and unpredictable environments.
 
+    \item Multi-Objective Optimization: Studies like \cite{bib:3_sandcat}, \cite{bib:6_marine}, and \cite{bib:10} successfully balance multiple objectives, such 
+    as execution time, energy consumption, and cost, demonstrating the potential of advanced optimization techniques.
+    
+    \item Advanced Optimization Techniques: The use of machine learning, metaheuristic algorithms, and hybrid approaches 
+    represents a significant advancement over traditional scheduling methods, enabling more intelligent and efficient 
+    scheduling decisions.
+    
+    \item Scalability: Several algorithms demonstrate scalability to large workflows and diverse system sizes, highlighting 
+    their applicability to real-world scenarios with complex and extensive computational demands.
+    
+    \item Privacy and Security Considerations: Studies like \cite{bib:2_faro} and \cite{bib:7_ppps} address the growing importance of data privacy and 
+    security, integrating these considerations into the scheduling process.
+\end{itemize}
+
+\subsection{Key Differences and Trade-offs}
+Despite common goals, the studies exhibit key differences and trade-offs:
+\begin{itemize}
+    \item Focus Areas: Some studies prioritize execution time and latency (\cite{bibib:1_acrl}, \cite{bib:3_sandcat}, 
+    \cite{bib:4_faas}), while others focus on energy efficiency (\cite{bib:5_epee}, \cite{bib:6_marine}, \cite{bib:10}) 
+    or privacy preservation (\cite{bib:7_ppps}).
+
+    \item Optimization Techniques: The choice of optimization algorithm varies, with some studies employing 
+    reinforcement learning (\cite{bib:1_acrl}), others using metaheuristic algorithms (\cite{bib:3_sandcat}, \cite{bib:6_marine}, 
+    \cite{bib:10}), and some integrating hybrid approaches (\cite{bib:2_faro}, \cite{bib:9}).
+    
+    \item Trade-offs Between Objectives: Balancing multiple objectives often involves trade-offs. For example, 
+    focusing on energy efficiency might lead to increased execution times, while prioritizing execution speed could 
+    result in higher energy consumption or costs.
+\end{itemize}
+
+\subsection{Addressing Multiple Objectives}
+The studies demonstrate different strategies for balancing conflicting objectives:
+\begin{itemize}
+    \item \cite{bib:3_sandcat}: The MSISCSOA algorithm effectively balances execution latency and energy consumption 
+    by employing a multi-strategy optimization approach, enhancing global optimization capabilities and preventing 
+    premature convergence.
+
+    \item \cite{bib:6_marine}: The OMPA algorithm combines workload prediction with opposition-based learning to minimize 
+    execution time and energy consumption while reducing resource wastage.
+    
+    \item \cite{bib:10}: The GM-MOPSO algorithm integrates genetic operators into particle swarm optimization to optimize 
+    execution time and energy consumption simultaneously, achieving superior performance in HPC workflow scheduling.
+\end{itemize}
+
+\subsection{Practical Implications and Applicability}
+The findings have practical implications across various computing environments:
+\begin{itemize}
+    \item Edge Computing and MEC: Algorithms like \cite{bib:2_faro}, \cite{bib:3_sandcat}, and \cite{bib:6_marine} are particularly 
+    relevant for edge computing and MEC environments, where resource constraints and latency requirements are critical.
+
+    \item Cloud and Hybrid Environments: Methods in \cite{bib:5_epee} and \cite{bib:9} offer valuable strategies for cloud 
+    service providers and organizations utilizing hybrid cloud infrastructures, enabling cost savings and 
+    improved performance through optimized resource allocation.
+    
+    \item HPC Systems: Studies like \cite{bib:1_acrl}, \cite{bib:8}, and \cite{bib:10} contribute to enhancing the 
+    efficiency of HPC systems, benefiting applications that require significant computational power and efficient workflow execution.
+    
+    \item Privacy-Sensitive Applications: \cite{bib:7_ppps} provides solutions for organizations dealing with sensitive 
+    data across multiple jurisdictions, ensuring compliance with data privacy regulations without compromising performance.
+\end{itemize}
+
+\subsection{Limitations Identified in Studies}
+The studies also reveal limitations and areas for improvement:
+\begin{itemize}
+    \item Computational Complexity: Some advanced algorithms may introduce significant computational 
+    overhead, potentially limiting their applicability in real-time or resource-constrained environments.
+
+    \item Assumptions in Models: Certain models rely on accurate real-time data, such as electricity pricing 
+    (\cite{bib:5_epee}) or workload predictions (\cite{bib:6_marine}), which may not always be available or reliable.
+    
+    \item Scalability Challenges: While many algorithms demonstrate scalability, handling extremely large-scale 
+    systems or highly dynamic environments remains a challenge.
+    
+    \item Integration of Privacy and Security: Not all studies sufficiently address privacy and security 
+    considerations, highlighting the need for more comprehensive integration of these aspects into scheduling algorithms.
+\end{itemize}
+
+\section{Future Research Directions}
+\subsection{Integration of Renewable Energy Sources}
+Future research could focus on incorporating renewable energy sources into scheduling algorithms, further 
+reducing environmental impact and operational costs. This integration would involve adapting scheduling strategies
+ to consider the availability and variability of renewable energy, optimizing resource allocation accordingly.
+
+\subsection{Enhanced Privacy Mechanisms}
+As data privacy regulations become increasingly stringent, developing advanced privacy-preserving techniques is 
+essential. Future studies could explore integrating secure multi-party computation, differential privacy, or blockchain 
+technologies into scheduling algorithms to enhance data protection.
+
+\subsection{Scalability to Larger and More Dynamic Systems}
+Addressing scalability challenges requires developing algorithms that can efficiently handle larger workloads and 
+more dynamic environments. Research could explore distributed optimization techniques, hierarchical scheduling models, 
+and real-time adaptability to accommodate rapid changes in workload and resource availability.
+
+\subsection{Hybrid Optimization Techniques}
+Combining multiple optimization methods may yield more robust and efficient scheduling algorithms. Future research could 
+investigate hybrid approaches that integrate machine learning, metaheuristic optimization, and heuristic methods to balance 
+global exploration and local exploitation effectively.
+
+\subsection{Incorporation of Emerging Computing Paradigms}
+Emerging computing paradigms, such as quantum computing, edge-cloud continuum, and serverless architectures, present new 
+challenges and opportunities for workflow scheduling. Future studies could explore how scheduling algorithms can be 
+adapted or developed to leverage these technologies and address their unique constraints.
 
 \cleardoublepage
 \phantomsection
 \newpage
 \addcontentsline{toc}{section}{Conclusion}
 \section*{Conclusion}
-This review highlights the strengths and limitations of each method, demonstrating the diversity in 
-workflow scheduling needs across different computational architectures. Each method reflects a distinct
-priority -- whether privacy, energy efficiency, latency, or resource optimization -- tailored to specific operational
-environments and regulatory constraints.
+This literature review has provided a comprehensive comparative analysis of ten advanced workflow scheduling algorithms 
+designed for HPC and cloud environments. The studies demonstrate significant advancements in addressing the complexities 
+of workflow scheduling, offering innovative solutions that improve execution time, energy efficiency, cost optimization, 
+privacy preservation, and resource utilization.
 
-Each study’s results demonstrate tangible improvements over traditional methods, 
-suggesting that the future of workflow scheduling lies in the integration of machine learning, 
-optimization, and heuristic approaches to handle the growing complexity and scale of distributed computing systems.
+Common strengths among the studies include adaptability to dynamic workloads, scalability to large and heterogeneous systems, 
+and the ability to balance multiple objectives through advanced optimization techniques. The use of machine learning, 
+metaheuristic algorithms, and hybrid approaches reflects the evolving landscape of workflow scheduling research.
+
+Key differences lie in the specific objectives prioritized, the optimization methods employed, and the application domains 
+targeted. These differences highlight the importance of tailoring scheduling strategies to the unique requirements of different 
+computing environments.
+
+The limitations identified in the studies point to areas where further research is needed, such as enhancing scalability, 
+integrating privacy and security considerations more comprehensively, and reducing computational complexity.
+
+Advanced scheduling algorithms play a crucial role in optimizing workflows in HPC and cloud environments, contributing to 
+improved system performance, resource management, and compliance with evolving regulations. As computing demands continue to 
+grow and diversify, ongoing research and development in this field are essential to meet the challenges of modern computing 
+infrastructures.
 
 \cleardoublepage
 \phantomsection
@@ -543,7 +733,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
 	\bibitem{bib:1_acrl}
 	\href{https://doi.org/10.1016/j.future.2023.09.018}{
     G. P Koslovski, K. Pereira, and P. R. Albuquerque, 
-    "DAG-based workflows scheduling using Actor–Critic Deep Reinforcement Learning,"
+    ``DAG-based workflows scheduling using Actor–Critic Deep Reinforcement Learning,``
     \textit{Future Generation Computer Systems}, vol. 150, pp. 354-363, Jan. 2024, 
     doi: 10.1016/j.future.2023.09.018.
     }
@@ -551,7 +741,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:2_faro}
 	\href{https://doi.org/10.1016/j.comcom.2024.107929}{
     D. K. Sajnani, X. Li, and A. R. Mahesar,
-    "Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments,"
+    ``Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments,``
     \textit{Computer Communications}, vols. 226–227, Art. no. 107929, Aug. 2024,
     doi: 10.1016/j.comcom.2024.107929.
     }
@@ -559,8 +749,8 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:3_sandcat}
     \href{https://doi.org/10.1016/j.suscom.2024.101014}{
     P. Jayalakshmi, S. S. Subashka Ramesh,
-    "Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for
-    heterogeneous edge computing environment,"
+    ``Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for
+    heterogeneous edge computing environment,``
     \textit{Sustainable Computing: Informatics and Systems}, vol. 43, Art. no. 101014, Sep. 2024,
     doi: 10.1016/j.suscom.2024.101014.
     }
@@ -568,7 +758,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:4_faas}
 	\href{https://doi.org/10.1016/j.future.2024.04.003}{
     S. H. Mahdizadeh, S. Abrishami,
-    "An assignment mechanism for workflow scheduling in Function as a Service edge environment,"
+    ``An assignment mechanism for workflow scheduling in Function as a Service edge environment,``
     \textit{Future Generation Computer Systems}, vol. 157, pp. 543-557, Aug. 2024,
     doi: 10.1016/j.future.2024.04.003.
     }
@@ -576,8 +766,8 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:5_epee}
 	\href{https://doi.org/10.1016/j.jksuci.2024.102170}{
     M. Hussain, L.-F. Wei, A. Rehman, A. Hussain, M. Ali, and M. H. Javed,
-    "An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data
-    centers,"
+    ``An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data
+    centers,``
     \textit{Journal of King Saud University - Computer and Information Sciences}, vol. 36, no. 8, Oct. 2024,
     doi: 10.1016/j.jksuci.2024.102170.
     }
@@ -585,8 +775,8 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:6_marine}
 	\href{https://doi.org/10.1016/j.pmcj.2022.101715}{
     F. Kuang, Z. Xu, and M. Masdari,
-    "Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based
-    Marine-Predator Algorithm,"
+    ``Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based
+    Marine-Predator Algorithm,``
     \textit{Pervasive and Mobile Computing}, vol. 87, Art. no. 101715, Dec. 2022,
     doi: 10.1016/j.pmcj.2022.101715.
     }
@@ -594,7 +784,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:7_ppps}
 	\href{https://doi.org/10.1016/j.future.2021.12.004}{
     Y. Xiao, A. C. Zhou, X. Yang, and B. He,
-    "Privacy-preserving workflow scheduling in geo-distributed data centers,"
+    ``Privacy-preserving workflow scheduling in geo-distributed data centers,``
     \textit{Future Generation Computer Systems}, vol. 130, pp. 46-58, May 2022,
     doi: 10.1016/j.future.2021.12.004.
     }
@@ -602,7 +792,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:8}
 	\href{https://doi.org/10.1016/j.jpdc.2023.104792}{
     L. Perotin, S. Kandaswamy, H. Sun, and P. Raghavan,
-    "Multi-resource scheduling of moldable workflows,"
+    ``Multi-resource scheduling of moldable workflows,``  
     \textit{Journal of Parallel and Distributed Computing}, vol. 184, Art. no. 104792, Feb. 2024,
     doi: 10.1016/j.jpdc.2023.104792
     }
@@ -610,7 +800,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:9}
 	\href{https://doi.org/10.1016/j.comnet.2020.107438}{
     A. Pasdar, Y. C. Lee, and K. Almi’ani,
-    "Hybrid scheduling for scientific workflows on hybrid clouds,"
+    ``Hybrid scheduling for scientific workflows on hybrid clouds,``
     \textit{Computer Networks}, vol. 181, Art. no. 107438, Nov. 2020,
     doi: 10.1016/j.comnet.2020.107438
     }
@@ -618,8 +808,8 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \bibitem{bib:10}
 	\href{https://doi.org/10.1016/j.asoc.2022.108791}{
     H. Hafsi, H. Gharsellaoui, and S. Bouamama,
-    "Genetically-modified Multi-objective Particle Swarm Optimization approach for high-performance 
-    computing workflow scheduling,"
+    ``Genetically-modified Multi-objective Particle Swarm Optimization approach for high-performance 
+    computing workflow scheduling,``
     \textit{Applied Soft Computing}, vol. 122, Art. no. 108791, Jun. 2022,
     doi: 10.1016/j.asoc.2022.108791
     }
@@ -627,17 +817,17 @@ optimization, and heuristic approaches to handle the growing complexity and scal
 \addcontentsline{toc}{section}{References}
 
 \newpage
-\section* {Application A. Table comparison of methods}
+\section* {Application A. Comparison of Methods}
 \hypertarget{ApplA}{}
 \begin{table}[H]
     \centering
-    \caption{Comparison of Methods}
+    \caption{Comparison of Scheduling Methods}
     \label{tbl:1}
     \scriptsize
     \begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|p{2cm}|X|X|X|}
     \hline
-    \textbf{Research paper} & \textbf{Computing environ-ment} & \textbf{Scheduling method} & 
-    \textbf{Optimiza-tion algorithm} & \textbf{Objective Function} & \textbf{Initial Data} & 
+    \textbf{Research paper} & \textbf{Computing environment} & \textbf{Scheduling method} & 
+    \textbf{Optimization algorithm} & \textbf{Objective Function} & \textbf{Initial Data} & 
     \textbf{Key method features} \\
     \hline
 
@@ -645,17 +835,17 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     % Research paper
     DAG-based workflows scheduling using Actor–Critic Deep Reinforce-ment Learning \cite{bib:1_acrl} &
     % Computing environment
-    Data Center (HPC) &
+    HPC Data Centers &
     % Scheduling method
     Actor-Critic RL &
     % Optimization algorithm
-    Deep Reinforce-ment Learning (DRL) &
+    Deep Reinforcement Learning (DRL) &
     % Objective Function
-    Minimize task delay and maximize efficiency &
+    Minimize task delay and maximize throughput &
     % Initial Data
-    HPC resources as DAG &
+    DAG-based workflows &
     % Key method features
-    Deep learning for adaptive queue management policies \\
+    Dynamic policy selection from existing algorithms \\
     \hline
 
     %--Line 2--
@@ -668,7 +858,7 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     % Optimization algorithm
     Remora Optimization Algorithm (ROA) &
     % Objective Function
-    Optimize CPU, memory, encryption time &
+    Minimize CPU, memory usage, and encryption cost &
     % Initial Data
     MEC resources and tasks &
     % Key method features
@@ -815,18 +1005,16 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     \hline
     \end{tabularx}
 \end{table}
-\addcontentsline{toc}{section}{Application A. Table comparison of methods}
 
 \newpage
 \cleardoublepage
 \phantomsection
 \appendix
-\section* {Application B. Table comparison of results}
+\section* {Application B. Comparison of Results}
 \hypertarget{ApplB}{}
-\addcontentsline{toc}{section}{Application B. Table comparison of results}
 \begin{table}[H]
     \centering
-    \caption{Comparison of Results}
+    \caption{Comparison of Performance Results}
     \label{tbl:2}
     \scriptsize
     \begin{tabularx}{\textwidth}{|p{3.5cm}|X|X|X|X|X|X|}
@@ -838,99 +1026,99 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     % Research paper
     DAG-based workflows scheduling using Actor–Critic Deep Reinforce-ment Learning \cite{bib:1_acrl} &
     % Perfomance metrics
-    Makespan, latency, throughput &
+    Makespan, throughput, task delay &
     % Key result
-    Improved over FCFS and SPT methods &
+    35\% improvement over FCFS and SPT in DAG processing speed &
     % Experimental Data
-    HPC simulations, DAG graphs \\
+    Simulations with synthetic and real DAGs \\
     \hline
 
     %--Line 2--
     % Research paper
     Secure workflow scheduling algorithm utilizing hybrid optimization in mobile edge computing environments \cite{bib:2_faro} &
     % Perfomance metrics
-    CPU, memory, encryption, security &
+    CPU utilization, memory usage, encryption cost, execution time &
     % Key result
-    Reduction in CPU (0.012), memory (0.010) &
+    CPU usage reduced to 0.012, memory to 0.010, encryption cost minimized &
     % Experimental Data
-    MEC simulations and real data \\
+    Workflows with varying task sizes (100, 200, 300 tasks) \\
     \hline
 
     %--Line 3--
     % Research paper
     Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heterogeneous edge computing environment \cite{bib:3_sandcat} &
     % Perfomance metrics
-    Delay, energy consumption &
+    Execution latency, energy consumption &
     % Key result
-    Reduced delay by 21.38\%, energy by 19.56\% &
+    Reduced latency by 21.38\%, energy consumption by 19.56\% &
     % Experimental Data
-    iFogSim testing \\
+    Simulations using iFogSim with scientific workflows \\
     \hline
 
     %--Line 4--
     % Research paper
     An assignment mechanism for workflow scheduling in Function as a Service edge environment \cite{bib:4_faas} &
     % Perfomance metrics
-    Makespan, resource utilization &
+    Normalized Completion Time (NCT), resource utilization &
     % Key result
-    Efficient resource allocation in multi-user EFaaS &
+    Significant improvements in execution times and reduced cold start delays &
     % Experimental Data
-    EFaaS simulation with task prioritization \\
+    Simulated EFaaS workflows with priority mechanisms \\
     \hline
 
     %--Line 5--
     % Research paper
     An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data centers \cite{bib:5_epee} &
     % Perfomance metrics
-    Energy cost, resource use &
+    Energy consumption, operational costs, execution time &
     % Key result
-    Significant reduction in energy costs &
+    Energy consumption reduced by up to 25\%, costs decreased by 20-30\% &
     % Experimental Data
-    Simulations in geo-distributed cloud (CloudSim) \\
+    Simulations in CloudSim with synthetic and real workflows \\
     \hline
 
     %--Line 6--
     % Research paper
     Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
     % Perfomance metrics
-    Missed deadlines, VMs &
+    Makespan, deadline miss rates, resource utilization &
     % Key result
-    Reduction in missed deadlines and VMs required &
+    Significant reductions in makespan and deadline misses, improved utilization &
     % Experimental Data
-    iFogSim with NASA and Saskatchewan data \\
+    iFogSim with NASA and Saskatchewan datasets \\
     \hline
 
     %--Line 7--
     % Research paper
     Privacy-preserving workflow scheduling in geo-distributed data centers \cite{bib:7_ppps} &
     % Perfomance metrics
-    Makespan, WAN usage, Security &
+    Execution time, WAN usage, privacy compliance &
     % Key result
-    Reduced makespan by 93\%, WAN usage by 99\% while preserving privacy constraints &
+    Execution time reduced by up to 93\%, WAN usage by up to 99\% &
     % Experimental Data
-    Windows Azure simulation with real-world data \\
+    Simulations with real-world workflows (MONTAGE, PSLOAD, PSMERGE) and Azure traces \\
     \hline
 
     %--Line 8--
     % Research paper
     Multi-resource scheduling of moldable workflows \cite{bib:8} &
     % Perfomance metrics
-    Makespan, Resource Allocation Efficiency &
+    Workflow completion time, resource utilization &
     % Key result
-    Improved makespan for HPC workflows &
+    Up to 30\% reduction in execution time, utilization above 85\% &
     % Experimental Data
-    HPC simulations with moldable workflows \\
+    Simulations with synthetic workloads and HPC benchmarks \\
     \hline
 
     %--Line 9--
     % Research paper
     Hybrid scheduling for scientific workflows on hybrid clouds \cite{bib:9} &
     % Perfomance metrics
-    Cost Reduction, Makespan &
+    Execution cost, execution time, deadline compliance &
     % Key result
-    40\% cost reduction and 25\% faster execution &
+    Cost reduced by 40\%, execution time improved by 25\% &
     % Experimental Data
-    Hybrid cloud (real-world + simulated workflows) \\
+    Tests with real-world and synthetic workflows in hybrid clouds \\
     \hline
 
     %--Line 10--
@@ -938,11 +1126,11 @@ optimization, and heuristic approaches to handle the growing complexity and scal
     Genetically-modified Multi-objective Particle Swarm Optimization
     approach for high-performance computing workflow scheduling \cite{bib:10} &
     % Perfomance metrics
-    Cost and Makespan Balancing &
+    Execution time, energy consumption, cost efficiency &
     % Key result
-    Superior cost and makespan optimization &
+    Energy consumption reduced by up to 30\%, execution time improved by 25\% &
     % Experimental Data
-    Simulated hybrid workflows (CloudSim) \\
+    Benchmark workflows (Cybershake, Epigenomics, Montage) \\
     \hline
     \end{tabularx}
 \end{table}
