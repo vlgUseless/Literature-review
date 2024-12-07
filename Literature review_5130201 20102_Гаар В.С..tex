@@ -139,6 +139,12 @@ stringstyle =\bfseries} % шрифт для строк
 % КОНЕЦ ТИТУЛЬНОГО ЛИСТА
 \newpage
 
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\newpage
+\addcontentsline{toc}{section}{Abstract}
 \section*{Abstract}
 Workflow scheduling is critical in optimizing the performance of high-performance computing (HPC) and 
 cloud environments, where efficient resource allocation and task execution are paramount. This literature 
@@ -153,7 +159,10 @@ including the integration of renewable energy sources, enhanced privacy mechanis
 optimization techniques. The findings underscore the significant role of advanced scheduling algorithms in improving 
 system performance and resource management in HPC and cloud environments.
 
+\cleardoublepage
+\phantomsection
 \newpage
+\addcontentsline{toc}{section}{Keywords}
 \section*{Keywords}
 Workflow Scheduling, High-Performance Computing (HPC), Mobile Edge Computing (MEC), Cloud Computing, 
 Directed Acyclic Graph (DAG), Resource Allocation, Data Privacy, Optimization Algorithms, 
@@ -816,6 +825,7 @@ infrastructures.
 \end{thebibliography}
 \addcontentsline{toc}{section}{References}
 
+
 \newpage
 \section* {Application A. Comparison of Methods}
 \hypertarget{ApplA}{}
@@ -1005,11 +1015,12 @@ infrastructures.
     \hline
     \end{tabularx}
 \end{table}
+\addcontentsline{toc}{section}{Application A. Comparison of Methods}
 
-\newpage
 \cleardoublepage
 \phantomsection
-\appendix
+\newpage
+\addcontentsline{toc}{section}{Application B. Comparison of Results}
 \section* {Application B. Comparison of Results}
 \hypertarget{ApplB}{}
 \begin{table}[H]
