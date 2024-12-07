@@ -475,9 +475,7 @@ The ten reviewed studies exhibit significant advancements in workflow scheduling
 specific challenges within diverse computing environments. This section analyzes the similarities and differences 
 in their results, highlighting shared achievements, unique strengths, and limitations.
 
-\subsubsection{Execution Time Optimization}
-All studies emphasize minimizing execution time as a primary objective, yet their methods and results vary depending 
-on the targeted environment and algorithmic approach:
+A primary focus across the studies is the optimization of execution time, though each employs distinct methods tailored to their specific environments.
 \begin{itemize}
     \item Algorithm in the \cite{bib:1_acrl} achieve a 35\% improvement in DAG processing speed, demonstrating the effectiveness of 
     Actor-Critic RL in prioritizing task dependencies in HPC environments. This result parallels the performance of MRSA 
@@ -506,8 +504,7 @@ on the targeted environment and algorithmic approach:
     also prioritize privacy, showing that execution time optimization is often coupled with other objectives.
 \end{itemize}
 
-\subsubsection{Energy Efficiency}
-Energy optimization emerges as a critical concern, particularly for edge and cloud systems:
+Similarly, energy optimization emerges as a critical concern, particularly for edge and cloud systems:
 \begin{itemize}
     \item EPEE, presented in \cite{bib:5_epee}, stands out with significant reductions in energy consumption, 
     leveraging DVFS to adapt workloads across geographically distributed data centers. This focus on 
@@ -532,7 +529,6 @@ Energy optimization emerges as a critical concern, particularly for edge and clo
     savings tied to energy tariffs.
 \end{itemize}
 
-\subsubsection{Cost Optimization}
 Cost reduction is another recurring objective, especially in hybrid and cloud environments:
 \begin{itemize}
     \item HSHC, presented in \cite{bib:9}, achieves a 40\% reduction in workflow costs, demonstrating the 
@@ -555,7 +551,6 @@ Cost reduction is another recurring objective, especially in hybrid and cloud en
     through WAN usage reduction rather than explicit cost optimization.
 \end{itemize}
 
-\subsubsection{Privacy and Data Locality}
 Privacy preservation is a unique dimension, primarily addressed in PPPS approach in \cite{bib:7_ppps}, 
 which minimizes WAN usage by 99\% while ensuring compliance with data privacy regulations. This 
 trade-off between performance and privacy is distinct from the goals of other studies, which do not 
@@ -578,7 +573,6 @@ explicitly address data protection.
     present in energy- or cost-driven methods.
 \end{itemize}
 
-\subsubsection{Resource Utilization and Scalability}
 Efficient resource utilization is central to all studies, yet the methods vary significantly:
 \begin{itemize}
     \item MRSA in \cite{bib:8} optimizes multi-resource workflows by reallocating CPU, memory, 
@@ -599,7 +593,6 @@ Efficient resource utilization is central to all studies, yet the methods vary s
 \end{itemize}
 
 \section{Synthesis and Discussion}
-\subsection{Common Strengths and Innovations}
 Several common strengths and innovative approaches emerge from the comparative analysis:
 \begin{itemize}
     \item Adaptability: Many algorithms incorporate mechanisms to adapt to dynamic workloads and resource availability, 
@@ -619,8 +612,7 @@ Several common strengths and innovative approaches emerge from the comparative a
     security, integrating these considerations into the scheduling process.
 \end{itemize}
 
-\subsection{Key Differences and Trade-offs}
-Despite common goals, the studies exhibit key differences and trade-offs:
+\noindent Despite common goals, the studies exhibit key differences and trade-offs:
 \begin{itemize}
     \item Focus Areas: Some studies prioritize execution time and latency (\cite{bibib:1_acrl}, \cite{bib:3_sandcat}, 
     \cite{bib:4_faas}), while others focus on energy efficiency (\cite{bib:5_epee}, \cite{bib:6_marine}, \cite{bib:10}) 
@@ -635,8 +627,7 @@ Despite common goals, the studies exhibit key differences and trade-offs:
     result in higher energy consumption or costs.
 \end{itemize}
 
-\subsection{Addressing Multiple Objectives}
-The studies demonstrate different strategies for balancing conflicting objectives:
+\noindent The studies demonstrate different strategies for balancing conflicting objectives:
 \begin{itemize}
     \item \cite{bib:3_sandcat}: The MSISCSOA algorithm effectively balances execution latency and energy consumption 
     by employing a multi-strategy optimization approach, enhancing global optimization capabilities and preventing 
@@ -649,8 +640,8 @@ The studies demonstrate different strategies for balancing conflicting objective
     execution time and energy consumption simultaneously, achieving superior performance in HPC workflow scheduling.
 \end{itemize}
 
-\subsection{Practical Implications and Applicability}
-The findings have practical implications across various computing environments:
+
+\noindent The findings have practical implications across various computing environments:
 \begin{itemize}
     \item Edge Computing and MEC: Algorithms like \cite{bib:2_faro}, \cite{bib:3_sandcat}, and \cite{bib:6_marine} are particularly 
     relevant for edge computing and MEC environments, where resource constraints and latency requirements are critical.
@@ -666,8 +657,7 @@ The findings have practical implications across various computing environments:
     data across multiple jurisdictions, ensuring compliance with data privacy regulations without compromising performance.
 \end{itemize}
 
-\subsection{Limitations Identified in Studies}
-The studies also reveal limitations and areas for improvement:
+\noindent The studies also reveal limitations and areas for improvement:
 \begin{itemize}
     \item Computational Complexity: Some advanced algorithms may introduce significant computational 
     overhead, potentially limiting their applicability in real-time or resource-constrained environments.
@@ -683,28 +673,19 @@ The studies also reveal limitations and areas for improvement:
 \end{itemize}
 
 \section{Future Research Directions}
-\subsection{Integration of Renewable Energy Sources}
-Future research could focus on incorporating renewable energy sources into scheduling algorithms, further 
-reducing environmental impact and operational costs. This integration would involve adapting scheduling strategies
- to consider the availability and variability of renewable energy, optimizing resource allocation accordingly.
+Building upon these findings, future research could focus on incorporating renewable energy sources into scheduling algorithms, further reducing environmental impact and operational costs. This integration would involve adapting scheduling strategies to consider the availability and variability of renewable energy, optimizing resource allocation accordingly.
 
-\subsection{Enhanced Privacy Mechanisms}
-As data privacy regulations become increasingly stringent, developing advanced privacy-preserving techniques is 
-essential. Future studies could explore integrating secure multi-party computation, differential privacy, or blockchain 
-technologies into scheduling algorithms to enhance data protection.
+Additionally, as data privacy regulations become increasingly stringent, developing advanced privacy-preserving techniques is essential. Future studies could explore integrating secure multi-party computation, differential privacy, or blockchain technologies into scheduling algorithms to enhance data protection.
 
-\subsection{Scalability to Larger and More Dynamic Systems}
 Addressing scalability challenges requires developing algorithms that can efficiently handle larger workloads and 
 more dynamic environments. Research could explore distributed optimization techniques, hierarchical scheduling models, 
 and real-time adaptability to accommodate rapid changes in workload and resource availability.
 
-\subsection{Hybrid Optimization Techniques}
 Combining multiple optimization methods may yield more robust and efficient scheduling algorithms. Future research could 
 investigate hybrid approaches that integrate machine learning, metaheuristic optimization, and heuristic methods to balance 
 global exploration and local exploitation effectively.
 
-\subsection{Incorporation of Emerging Computing Paradigms}
-Emerging computing paradigms, such as quantum computing, edge-cloud continuum, and serverless architectures, present new 
+Finally, emerging computing paradigms, such as quantum computing, edge-cloud continuum, and serverless architectures, present new 
 challenges and opportunities for workflow scheduling. Future studies could explore how scheduling algorithms can be 
 adapted or developed to leverage these technologies and address their unique constraints.
 
