@@ -320,9 +320,8 @@ workflows in HPC data centers, aiming to minimize task delays and optimize resou
 secure workflow scheduling in MEC environments, focusing on reducing CPU and memory utilization while 
 enhancing security.
 
-\item \cite{bib:3_sandcat}: Proposes the Multi-Strategy Improved Sand Cat Optimization Algorithm 
-(MSISCSOA) for workflow scheduling in heterogeneous edge computing environments, targeting the 
-minimization of execution latency and energy consumption.
+\item \cite{bib:6_marine}: Proposes an opposition-based Marine Predator Algorithm (OMPA) combined with 
+workload prediction using artificial neural networks for multi-workflow scheduling in MEC environments.
 
 \item \cite{bib:4_faas}: Develops an assignment mechanism inspired by the course allocation problem 
 for scheduling workflows in Edge Function as a Service (EFaaS) environments, emphasizing efficient 
@@ -331,9 +330,6 @@ resource allocation and reduced execution times.
 \item \cite{bib:5_epee}: Presents the Electricity Price and Energy-Efficient (EPEE) scheduling framework 
 for geographically distributed cloud data centers, incorporating dynamic electricity pricing and energy 
 consumption optimization.
-
-\item \cite{bib:6_marine}: Proposes an opposition-based Marine Predator Algorithm (OMPA) combined with 
-workload prediction using artificial neural networks for multi-workflow scheduling in MEC environments.
 
 \item \cite{bib:7_ppps}: Introduces the Privacy-Preserving Partitioning-based Scheduling Algorithm 
 (PPPS) for geo-distributed data centers, addressing privacy constraints and network heterogeneity.
@@ -345,40 +341,15 @@ systems, focusing on maximizing resource utilization and minimizing workflow exe
 algorithms with dynamic adjustments to optimize the scheduling of scientific workflows in hybrid 
 cloud environments.
 
+\item \cite{bib:3_sandcat}: Proposes the Multi-Strategy Improved Sand Cat Optimization Algorithm 
+(MSISCSOA) for workflow scheduling in heterogeneous edge computing environments, targeting the 
+minimization of execution latency and energy consumption.
+
 \item  \cite{bib:10}: Develops a Genetically-Modified Multi-objective Particle Swarm Optimization 
 (GM-MOPSO) approach for HPC workflow scheduling, aiming to balance execution time and energy efficiency.
 \end{enumerate}
 
 \subsection{Detailed Comparative Analysis}
-% \subsubsection{Mathematical and Programming Approaches}
-% The mathematical foundations and programming frameworks employed in these studies vary significantly:
-% \begin{itemize}
-%     \item Reinforcement Learning: \cite{bib:1_acrl} leverages Actor-Critic Deep Reinforcement Learning, where the actor selects 
-%     scheduling policies based on the current state, and the critic evaluates the performance, enabling the system to learn 
-%     optimal scheduling strategies without pre-labeled datasets.
-
-%     \item Hybrid Optimization Algorithms: \cite{bib:2_faro} combines the Feedback Artificial Tree (FAT) and Remora Optimization Algorithm 
-%     (ROA) to balance local adaptability and global optimization. \cite{bib:3_sandcat} enhances the Sand Cat Optimization Algorithm with 
-%     multi-strategy improvements, including random variation, elite collaboration, and opposition-based learning.
-    
-%     \item Metaheuristic Algorithms: \cite{bib:6_marine} employs the Marine Predator Algorithm (MPA) with opposition-based learning to 
-%     improve search capabilities and avoid local optima. \cite{bib:10} integrates genetic operators into Particle Swarm Optimization, 
-%     enhancing solution diversity and convergence.
-    
-%     \item Graph Partitioning and Privacy Preservation: \cite{bib:7_ppps} utilizes graph partitioning techniques to minimize WAN usage 
-%     while adhering to privacy constraints, introducing a two-stage optimization method that includes privacy-aware workflow 
-%     partitioning and heterogeneity-aware scheduling refinement.
-    
-%     \item Resource Allocation Models: \cite{bib:4_faas} introduces a bidding-based assignment mechanism, inspired by course allocation 
-%     problems, to optimize resource allocation in EFaaS environments. \cite{bib:5_epee} incorporates dynamic voltage and frequency scaling 
-%     (DVFS) into the scheduling model to reduce energy consumption based on workload requirements.
-% \end{itemize}
-
-% Programming frameworks used include Python and TensorFlow for machine learning implementations (\cite{bib:1_acrl}, 
-% \cite{bib:6_marine}), and simulation environments such as iFogSim, CloudSim, and custom-built simulators for performance evaluation.
-
-% \subsubsection{Detailed comparison}
-
 An Actor-Critic RL approach was used in \cite{bib:1_acrl}, designed to reduce task delays in high-performance 
 computing environments. By framing task scheduling as a directed acyclic graph (DAG), this method allows 
 adaptive queue management, significantly outperforming traditional First-Come, First-Served (FCFS) and 
@@ -423,7 +394,7 @@ Furthermore, \cite{bib:7_ppps} focuses on privacy in geo-distributed data center
 Partitioning-based Scheduling (PPPS). Their results show remarkable reductions in WAN usage (up to 99\%) 
 and execution time (up to 93\%) by addressing complex multi-level privacy constraints. Unlike other studies 
 focused primarily on resource and energy efficiency \cite{bib:1_acrl}, 
-\cite{bib:3_sandcat}--\cite{bib:6_marine}, \cite{bib:8}--\cite{bib:10}, PPPS uniquely addresses regulatory 
+\cite{bib:6_marine}--\cite{bib:5_epee}, \cite{bib:8}--\cite{bib:10}, PPPS uniquely addresses regulatory 
 requirements in data privacy. This feature sets it apart as a solution for environments where data transfer 
 is restricted by privacy laws, particularly in scientific workflows operating across multiple jurisdictions.
 
@@ -598,7 +569,7 @@ Several common strengths and innovative approaches emerge from the comparative a
     \item Adaptability: Many algorithms incorporate mechanisms to adapt to dynamic workloads and resource availability, 
     enhancing their effectiveness in heterogeneous and unpredictable environments.
 
-    \item Multi-Objective Optimization: Studies like \cite{bib:3_sandcat}, \cite{bib:6_marine}, and \cite{bib:10} successfully balance multiple objectives, such 
+    \item Multi-Objective Optimization: Studies like \cite{bib:6_marine}, \cite{bib:3_sandcat}, and \cite{bib:10} successfully balance multiple objectives, such 
     as execution time, energy consumption, and cost, demonstrating the potential of advanced optimization techniques.
     
     \item Advanced Optimization Techniques: The use of machine learning, metaheuristic algorithms, and hybrid approaches 
@@ -614,13 +585,11 @@ Several common strengths and innovative approaches emerge from the comparative a
 
 \noindent Despite common goals, the studies exhibit key differences and trade-offs:
 \begin{itemize}
-    \item Focus Areas: Some studies prioritize execution time and latency (\cite{bibib:1_acrl}, \cite{bib:3_sandcat}, 
-    \cite{bib:4_faas}), while others focus on energy efficiency (\cite{bib:5_epee}, \cite{bib:6_marine}, \cite{bib:10}) 
+    \item Focus Areas: Some studies prioritize execution time and latency (\cite{bib:1_acrl}, \cite{bib:4_faas}, \cite{bib:3_sandcat}), while others focus on energy efficiency (\cite{bib:6_marine}, \cite{bib:5_epee}, \cite{bib:10}) 
     or privacy preservation (\cite{bib:7_ppps}).
 
     \item Optimization Techniques: The choice of optimization algorithm varies, with some studies employing 
-    reinforcement learning (\cite{bib:1_acrl}), others using metaheuristic algorithms (\cite{bib:3_sandcat}, \cite{bib:6_marine}, 
-    \cite{bib:10}), and some integrating hybrid approaches (\cite{bib:2_faro}, \cite{bib:9}).
+    reinforcement learning (\cite{bib:1_acrl}), others using metaheuristic algorithms (\cite{bib:6_marine}, \cite{bib:3_sandcat}, \cite{bib:10}), and some integrating hybrid approaches (\cite{bib:2_faro}, \cite{bib:9}).
     
     \item Trade-offs Between Objectives: Balancing multiple objectives often involves trade-offs. For example, 
     focusing on energy efficiency might lead to increased execution times, while prioritizing execution speed could 
@@ -629,12 +598,12 @@ Several common strengths and innovative approaches emerge from the comparative a
 
 \noindent The studies demonstrate different strategies for balancing conflicting objectives:
 \begin{itemize}
+    \item \cite{bib:6_marine}: The OMPA algorithm combines workload prediction with opposition-based learning to minimize 
+    execution time and energy consumption while reducing resource wastage.
+
     \item \cite{bib:3_sandcat}: The MSISCSOA algorithm effectively balances execution latency and energy consumption 
     by employing a multi-strategy optimization approach, enhancing global optimization capabilities and preventing 
     premature convergence.
-
-    \item \cite{bib:6_marine}: The OMPA algorithm combines workload prediction with opposition-based learning to minimize 
-    execution time and energy consumption while reducing resource wastage.
     
     \item \cite{bib:10}: The GM-MOPSO algorithm integrates genetic operators into particle swarm optimization to optimize 
     execution time and energy consumption simultaneously, achieving superior performance in HPC workflow scheduling.
@@ -643,7 +612,7 @@ Several common strengths and innovative approaches emerge from the comparative a
 
 \noindent The findings have practical implications across various computing environments:
 \begin{itemize}
-    \item Edge Computing and MEC: Algorithms like \cite{bib:2_faro}, \cite{bib:3_sandcat}, and \cite{bib:6_marine} are particularly 
+    \item Edge Computing and MEC: Algorithms like \cite{bib:2_faro}, \cite{bib:6_marine}, and \cite{bib:3_sandcat} are particularly 
     relevant for edge computing and MEC environments, where resource constraints and latency requirements are critical.
 
     \item Cloud and Hybrid Environments: Methods in \cite{bib:5_epee} and \cite{bib:9} offer valuable strategies for cloud 
@@ -868,20 +837,21 @@ infrastructures.
 
     %--Line 3--
     % Research paper
-    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heteroge-neous edge computing environment \cite{bib:3_sandcat} &
+    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
     % Computing environment
-    Hybrid Cloud-Edge Computing &
+    Mobile Edge Computing (MEC) &
     % Scheduling method
-    Sand Cat Optimization (SCOA) &
+    Marine Predator Algorithm (MPA) &
     % Optimization algorithm
-    MSISCSOA (Heuristic Swarm Optimization) &
+    Opposition-based Marine Predator Algorithm (OMPA) &
     % Objective Function
-    Minimize delay and energy consumption &
+    Reduce missed deadlines, minimize VMs &
     % Initial Data
-    Edge computing resources &
+    Historical IoT data in MEC &
     % Key method features
-    Multi-strategy approach with dynamic search \\
+    Uses opposition-based learning to avoid local minima \\
     \hline
+    
 
     %--Line 4--
     % Research paper
@@ -902,8 +872,7 @@ infrastructures.
 
     %--Line 5--
     % Research paper
-    An electricity price and energy-efficient workflow scheduling in geographi
-    cally distributed cloud data centers \cite{bib:5_epee} &
+    An electricity price and energy-efficient workflow scheduling in geographically distributed cloud data centers \cite{bib:5_epee} &
     % Computing environment
     Geo-distributed cloud data centers &
     % Scheduling method
@@ -920,23 +889,6 @@ infrastructures.
 
     %--Line 6--
     % Research paper
-    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
-    % Computing environment
-    Mobile Edge Computing (MEC) &
-    % Scheduling method
-    Marine Predator Algorithm (MPA) &
-    % Optimization algorithm
-    Opposition-based Marine Predator Algorithm (OMPA) &
-    % Objective Function
-    Reduce missed deadlines, minimize VMs &
-    % Initial Data
-    Historical IoT data in MEC &
-    % Key method features
-    Uses opposition-based learning to avoid local minima \\
-    \hline
-
-    %--Line 7--
-    % Research paper
     Privacy-preserving workflow scheduling in geo-distributed data centers \cite{bib:7_ppps} &
     % Computing environment
     Geo-distributed DCs &
@@ -952,7 +904,7 @@ infrastructures.
     Two-stage privacy-preserving workflow scheduling \\
     \hline
 
-    %--Line 8--
+    %--Line 7--
     % Research paper
     Multi-resource scheduling of moldable workflows \cite{bib:8} &
     % Computing environment
@@ -969,8 +921,8 @@ infrastructures.
     Enables pre-execution resource adjustments \\
     \hline
 
-    
-    %--Line 9--
+
+    %--Line 8--
     % Research paper
     Hybrid scheduling for scientific workflows on hybrid clouds \cite{bib:9} &
     % Computing environment
@@ -987,10 +939,27 @@ infrastructures.
     Handles data locality dynamically \\
     \hline
 
+    
+    %--Line 9--
+    % Research paper
+    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heterogeneous edge computing environment \cite{bib:3_sandcat} &
+    % Computing environment
+    Hybrid Cloud-Edge Computing &
+    % Scheduling method
+    Sand Cat Optimization (SCOA) &
+    % Optimization algorithm
+    MSISCSOA (Heuristic Swarm Optimization) &
+    % Objective Function
+    Minimize delay and energy consumption &
+    % Initial Data
+    Edge computing resources &
+    % Key method features
+    Multi-strategy approach with dynamic search \\
+    \hline
+
     %--Line 10--
     % Research paper
-    Genetically-modified Multi-objective Particle Swarm Optimization approach for 
-    high-performance computing workflow scheduling \cite{bib:10} &
+    Genetically-modified Multi-objective Particle Swarm Optimization approach for high-performance computing workflow scheduling \cite{bib:10} &
     % Computing environment
     Hybrid cloud + HPC &
     % Scheduling method
@@ -1006,12 +975,12 @@ infrastructures.
     \hline
     \end{tabularx}
 \end{table}
-\addcontentsline{toc}{section}{Application A. Comparison of Methods}
+%\addcontentsline{toc}{section}{Application A. Comparison of Methods}
 
 \cleardoublepage
 \phantomsection
 \newpage
-\addcontentsline{toc}{section}{Application B. Comparison of Results}
+%\addcontentsline{toc}{section}{Application B. Comparison of Results}
 \section* {Application B. Comparison of Results}
 \hypertarget{ApplB}{}
 \begin{table}[H]
@@ -1048,15 +1017,16 @@ infrastructures.
 
     %--Line 3--
     % Research paper
-    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heterogeneous edge computing environment \cite{bib:3_sandcat} &
+    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
     % Perfomance metrics
-    Execution latency, energy consumption &
+    Makespan, deadline miss rates, resource utilization &
     % Key result
-    Reduced latency by 21.38\%, energy consumption by 19.56\% &
+    Significant reductions in makespan and deadline misses, improved utilization &
     % Experimental Data
-    Simulations using iFogSim with scientific workflows \\
+    iFogSim with NASA and Saskatchewan datasets \\
     \hline
 
+   
     %--Line 4--
     % Research paper
     An assignment mechanism for workflow scheduling in Function as a Service edge environment \cite{bib:4_faas} &
@@ -1081,17 +1051,6 @@ infrastructures.
 
     %--Line 6--
     % Research paper
-    Multi-workflow scheduling and resource provisioning in Mobile Edge Computing using opposition-based Marine-Predator Algorithm \cite{bib:6_marine} &
-    % Perfomance metrics
-    Makespan, deadline miss rates, resource utilization &
-    % Key result
-    Significant reductions in makespan and deadline misses, improved utilization &
-    % Experimental Data
-    iFogSim with NASA and Saskatchewan datasets \\
-    \hline
-
-    %--Line 7--
-    % Research paper
     Privacy-preserving workflow scheduling in geo-distributed data centers \cite{bib:7_ppps} &
     % Perfomance metrics
     Execution time, WAN usage, privacy compliance &
@@ -1101,7 +1060,7 @@ infrastructures.
     Simulations with real-world workflows (MONTAGE, PSLOAD, PSMERGE) and Azure traces \\
     \hline
 
-    %--Line 8--
+    %--Line 7--
     % Research paper
     Multi-resource scheduling of moldable workflows \cite{bib:8} &
     % Perfomance metrics
@@ -1112,7 +1071,7 @@ infrastructures.
     Simulations with synthetic workloads and HPC benchmarks \\
     \hline
 
-    %--Line 9--
+    %--Line 8--
     % Research paper
     Hybrid scheduling for scientific workflows on hybrid clouds \cite{bib:9} &
     % Perfomance metrics
@@ -1121,6 +1080,17 @@ infrastructures.
     Cost reduced by 40\%, execution time improved by 25\% &
     % Experimental Data
     Tests with real-world and synthetic workflows in hybrid clouds \\
+    \hline
+
+    %--Line 9--
+    % Research paper
+    Multi-strategy improved sand cat optimization algorithm-based workflow scheduling mechanism for heterogeneous edge computing environment \cite{bib:3_sandcat} &
+    % Perfomance metrics
+    Execution latency, energy consumption &
+    % Key result
+    Reduced latency by 21.38\%, energy consumption by 19.56\% &
+    % Experimental Data
+    Simulations using iFogSim with scientific workflows \\
     \hline
 
     %--Line 10--
